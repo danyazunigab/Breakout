@@ -28,7 +28,7 @@ class Socket {
     public String recieveSocket() throws IOException, SocketException {
         DatagramPacket data = new DatagramPacket(new byte[500], 500);
         this.Socket.receive(data);
-        System.out.println(data.toString());
+        System.out.println(new String(data.getData()));
 
         return data.toString();
 

@@ -6,4 +6,6 @@
 #define BREAKOUT_MAIN_H
 
 #endif //BREAKOUT_MAIN_H
-#include "./Socket/Socket.c"
+
+char*  test_adapter(void);
+int main(void);

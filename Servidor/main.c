@@ -3,11 +3,44 @@
 //
 
 #include "main.h"
+#include "./Adapter/Adapter.h"
+#include "./Socket/Socket.c"
 #include <stdio.h>
 
+char* test_adapter(void) {
+    struct paddle paddle = {15, 45};
+    struct ball ball = {40, 40};
+    struct gamedata data = {
+            {
+                    {1, 1, 1, 1, 1, 1, 1, 1},
+                    {1, 1, 1, 1, 1, 1, 1, 1},
+                    {1, 1, 1, 1, 1, 1, 1, 1},
+                    {1, 1, 1, 1, 1, 1, 1, 1},
+                    {1, 1, 1, 1, 1, 1, 1, 1},
+                    {1, 1, 1, 1, 1, 1, 1, 1},
+                    {1, 1, 1, 1, 1, 1, 1, 1},
+                    {1, 1, 1, 1, 1, 1, 1, 1},
+                    {1, 1, 1, 1, 1, 1, 1, 1},
+                    {1, 1, 1, 1, 1, 1, 1, 1},
+                    {1, 1, 1, 1, 1, 1, 1, 1}},
+            paddle, ball, ""
+    };
+    char * json=NULL;
+    json= struct_to_Json(&data);
+    printf("%s",json);
+    return json;
+}
 
 int main() {
+
+
     printf("init\n");
+    printf("testing adapter is working\n");
+    char* test =test_adapter();
+    printf("adapter is working\n");
+
+
+
 //Obtener la estructura que maneja el envio de informacion.
     struct serversocket *server_socket = create_socket(8080);
 
@@ -18,15 +51,15 @@ int main() {
 
     while (TRUE) {
         printf("sending msg\n");
-        sendtoall(server_socket, "Hello client");
-        printf("%i,%i \n", server_socket->socket,WSAGetLastError());
+        sendtoall(server_socket, test);
+        printf("%i,%i \n", server_socket->socket, WSAGetLastError());
 
         printf("reciving msg\n");
         recieve(server_socket);
         printf("%s", server_socket->buffer);
-        printf("%i,%i \n", server_socket->socket,WSAGetLastError());
+        printf("%i,%i \n", server_socket->socket, WSAGetLastError());
 
-        if (server_socket->buffer!=NULL&&strncmp((const char *) server_socket->buffer, "STOP", 4) == 0) {
+        if (server_socket->buffer != NULL && strncmp((const char *) server_socket->buffer, "STOP", 4) == 0) {
             break;
         }
     }
