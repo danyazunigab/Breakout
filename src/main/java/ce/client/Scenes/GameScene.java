@@ -10,9 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 
 public class GameScene extends Scene{
     private LinkedList<LinkedList<Block>> blocks = new LinkedList<>();

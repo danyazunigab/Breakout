@@ -1,3 +1,5 @@
+package ce.client.Sockets;
+
 import java.io.IOException;
 import java.net.*;
 
