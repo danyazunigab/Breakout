@@ -7,28 +7,39 @@
 #include "./Socket/Socket.c"
 #include <stdio.h>
 
-char* test_adapter(void) {
-    struct paddle paddle = {15, 45};
-    struct ball ball = {40, 40};
+void move_paddle(struct serversocket* socket, struct gamedata* data) {
+    if (socket->buffer == NULL) {
+        return;
+    }
+    if ((strncmp((const char *)socket->buffer, "L", 1) == 0)&&data->paddle.left>10) {
+        data->paddle.rigth = data->paddle.rigth - 1;
+        data->paddle.left = data->paddle.left - 1;
+    }
+    if ((strncmp((const char *)socket->buffer, "R", 1) == 0)&&data->paddle.rigth<800) {
+        data->paddle.rigth = data->paddle.rigth + 1;
+        data->paddle.left = data->paddle.left + 1;
+    }
+};
+
+struct gamedata test_adapter(void) {
+    struct paddle paddle = {300, 450};
+    struct ball *ball = malloc(sizeof(struct ball));
+    ball->y = 40;
+    ball->x = 40;
     struct gamedata data = {
             {
-                    {1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 1, 1, 1, 1, 1, 1, 1},
-                    {1, 1, 1, 1, 1, 1, 1, 1}},
-            paddle, ball, ""
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+            },
+            paddle, ball, 1, "pajuila"
     };
-    char * json=NULL;
-    json= struct_to_Json(&data);
-    printf("%s",json);
-    return json;
+    return data;
 }
 
 int main() {
@@ -36,7 +47,7 @@ int main() {
 
     printf("init\n");
     printf("testing adapter is working\n");
-    char* test =test_adapter();
+    struct gamedata test = test_adapter();
     printf("adapter is working\n");
 
 
@@ -48,10 +59,15 @@ int main() {
 //Conectar el cliente, Siempre el primer mensaje recibido por el servidor ha de ser un msj del cliente con ''
     recieve(server_socket);
     printf("client connected \n");
+    char *json = NULL;
 
     while (TRUE) {
+        printf("Preparing msg\n");
+        json = struct_to_Json(&test);
+        printf("%s", json);
+
         printf("sending msg\n");
-        sendtoall(server_socket, test);
+        sendtoall(server_socket, json);
         printf("%i,%i \n", server_socket->socket, WSAGetLastError());
 
         printf("reciving msg\n");
@@ -59,9 +75,11 @@ int main() {
         printf("%s", server_socket->buffer);
         printf("%i,%i \n", server_socket->socket, WSAGetLastError());
 
+
         if (server_socket->buffer != NULL && strncmp((const char *) server_socket->buffer, "STOP", 4) == 0) {
             break;
         }
+        move_paddle(server_socket,&test);
     }
     return 0;
 }

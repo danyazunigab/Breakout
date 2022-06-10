@@ -6,8 +6,8 @@
 #define CLIENT_CONSTS_H
 #endif //CLIENT_CONSTS_H
 
-#define LINES 11
-#define ROWS 8
+#define LINES 8
+#define ROWS 11
 
 
 

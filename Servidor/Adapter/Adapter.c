@@ -12,7 +12,7 @@ char *struct_to_Json(struct gamedata *data) {
     cJSON *json = NULL;
     cJSON *blocks = NULL;
     cJSON *paddle = NULL;
-    cJSON *ball = NULL;
+    cJSON *balls = NULL;
     cJSON_bool check;
     json = cJSON_CreateObject();
     if (json == NULL) {
@@ -35,7 +35,7 @@ char *struct_to_Json(struct gamedata *data) {
             exit(-3);
         }
 
-        check = cJSON_AddItemToArray(blocks, row);
+       cJSON_AddItemToArray(blocks, row);
     }
 
     paddle = cJSON_AddObjectToObject(json, "paddle");
@@ -48,30 +48,36 @@ char *struct_to_Json(struct gamedata *data) {
         printf("error adding left to the paddle");
         exit(-3);
     }
-    if (cJSON_AddNumberToObject(paddle, "rigth", data->paddle.left)
+    if (cJSON_AddNumberToObject(paddle, "rigth", data->paddle.rigth)
         == NULL) {
         printf("error adding rigth to te paddle");
         exit(-3);
     }
 
 
-    ball = cJSON_AddObjectToObject(json, "ball");
-    if (ball == NULL) {
-        printf("error creating the ball");
+    balls = cJSON_AddArrayToObject(json, "balls");
+    if (balls == NULL) {
+        printf("error creating the balls");
         exit(-3);
     }
-    if (cJSON_AddNumberToObject(ball, "x", data->ball.x)
-        == NULL) {
-        printf("error adding x to ball");
-        exit(-3);
+    for (int i = 0; i < data->ball_number; ++i) {
+        cJSON *ball = cJSON_CreateObject();
+        if (cJSON_AddNumberToObject(ball, "x", data->ball[i].x)
+            == NULL) {
+            printf("error adding x to ball");
+            exit(-3);
+        }
+        if (cJSON_AddNumberToObject(ball, "y", data->ball[i].y)
+            == NULL) {
+            printf("error adding the y to ball");
+            exit(-3);
+        }
+        cJSON_AddItemToArray(balls, ball);
+
     }
-    if (cJSON_AddNumberToObject(ball, "y", data->ball.y)
-        == NULL) {
-        printf("error adding the y to ball");
-        exit(-3);
-    }
-    string= cJSON_Print(json);
-    if (string==NULL){
+
+    string = cJSON_Print(json);
+    if (string == NULL) {
         printf("error transforming the json objecto to string");
     }
     cJSON_Delete(json);

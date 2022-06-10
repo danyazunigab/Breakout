@@ -7,5 +7,5 @@
 
 #endif //BREAKOUT_MAIN_H
 
-char*  test_adapter(void);
+struct gamedata  test_adapter(void);
 int main(void);

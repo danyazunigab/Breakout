@@ -6,6 +6,7 @@
 #define CLIENT_GAME_DATA_H
 
 #endif //CLIENT_GAME_DATA_H
+
 #include "../Consts.h"
 struct paddle{
     int left;
@@ -19,6 +20,10 @@ struct ball{
 struct gamedata{
     int blocks[LINES][ROWS];
     struct paddle paddle;
-    struct ball ball;
+
+//Hay que rescribir este como una linkedlist
+    struct ball *ball;
+    int ball_number;
+
     char *msg;
 };
