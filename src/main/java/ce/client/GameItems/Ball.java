@@ -38,4 +38,9 @@ public class Ball {
     public int getID(){
         return this.id;
     }
+
+    public void update(GameData.ball ball){
+        setPosX(ball.x);
+        setPosY(ball.y);
+    }
 }

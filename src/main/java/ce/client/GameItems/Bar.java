@@ -39,4 +39,13 @@ public class Bar {
     public void shorten(){
         this.rectangle.setWidth(this.getRectangle().getWidth()*0.5);
     }
+
+    public void setSize(Integer size){
+        this.rectangle.setHeight(size);
+    }
+    public void update(GameData data){
+        this.setPosX(data.getPaddleLeft());
+        this.setSize(data.getPaddleSize());
+
+    }
 }

@@ -35,6 +35,15 @@ public class GameScene extends Scene{
                 }
             }
         });
+        this.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case LEFT, A, RIGHT, D -> player.stop();
+                    default -> {}
+                }
+            }
+        });
     }
     private void drawBars(int[] barList){
         for (int i = 0; i < barList.length; i++) {
@@ -47,7 +56,7 @@ public class GameScene extends Scene{
         for (int j = 0; j < blockMatrix.length; j++) {
             LinkedList<Block> blockRow = new LinkedList<>();
             for (int i = 0; i < blockMatrix[0].length; i++) {
-                Block block = new Block(new int[]{i, j},70*i+16,45*j+16);
+                Block block = new Block(new Integer[]{i, j},70*i+16,45*j+16);
                 this.group.getChildren().add(block.getRectangle());
                 blockRow.add(block);
             }
@@ -66,5 +75,21 @@ public class GameScene extends Scene{
     }
     public int getBallQuantity(){
         return this.balls.size();
+    }
+
+    public LinkedList<LinkedList<Block>> getBlocks() {
+        return blocks;
+    }
+
+    public LinkedList<Bar> getBars() {
+        return bars;
+    }
+
+    public LinkedList<Ball> getBalls() {
+        return balls;
+    }
+
+    public PlayerBar getPlayer() {
+        return player;
     }
 }
