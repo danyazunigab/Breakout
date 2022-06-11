@@ -1,7 +1,7 @@
 package ce.client.GameItems;
 
 public class PlayerBar extends Bar {
-    private int speed = 15;
+    private final int speed = 15;
 
     private String direction="";
 
@@ -23,6 +23,10 @@ public class PlayerBar extends Bar {
         this.direction = "";
     }
 
+    /**Getter
+     *
+     * @return A String with only a char, 'L' for left and 'R' for right
+-     */
     public String getDirection() {
         return direction;
     }

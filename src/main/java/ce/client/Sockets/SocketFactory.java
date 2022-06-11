@@ -8,7 +8,14 @@ import java.net.*;
  * Choose to build a Viewer socket or a client socket
  */
 public abstract class SocketFactory {
-
+    /**
+     * Create a Client Socket
+     * Send a msg to server to add this port as a client
+     * @param port a int indicating the port, expecto to use 0 to auto assign
+     * @return The Socker created
+     * @throws SocketException
+     * @throws UnknownHostException
+     */
     static public Socket clientSocket(Integer port) throws SocketException, UnknownHostException {
         Socket clientsocket = new Socket(port);
 
@@ -16,7 +23,14 @@ public abstract class SocketFactory {
         return clientsocket;
 
     }
-
+    /**
+     * Create a viewer Socket
+     * Send a msg to server to add this port as a viewer
+     * @param port an integer indicating the port, expect to be 0 to auto assign
+     * @return The Socket created
+     * @throws SocketException
+     * @throws UnknownHostException
+     */
     static public Socket viewerSocket(Integer port) throws SocketException, UnknownHostException {
         Socket viewersocket = new Socket(port);
         Integer errorcode = viewersocket.send("Viewer_add");
@@ -48,9 +62,9 @@ public abstract class SocketFactory {
                 }
 
                 System.out.println("clientMsg");
-                System.out.println(clientMsg.toString());
+                System.out.println(clientMsg);
                 System.out.println("viewerMsg");
-                System.out.println(viewerMsg.toString());
+                System.out.println(viewerMsg);
 
                 System.out.println("sending msg for server");
                 client.send("hello server");

@@ -13,9 +13,9 @@ import javafx.scene.paint.Color;
 import java.util.LinkedList;
 
 public class GameScene extends Scene{
-    private LinkedList<LinkedList<Block>> blocks = new LinkedList<>();
-    private LinkedList<Bar> bars = new LinkedList<>();
-    private LinkedList<Ball> balls = new LinkedList<>();
+    private final LinkedList<LinkedList<Block>> blocks = new LinkedList<>();
+    private final LinkedList<Bar> bars = new LinkedList<>();
+    private final LinkedList<Ball> balls = new LinkedList<>();
     private final Group group;
     private PlayerBar player;
     public GameScene(Group group,int[][] blockMatrix,int[] barList){

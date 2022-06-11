@@ -43,6 +43,11 @@ public class Bar {
     public void setSize(Integer size){
         this.rectangle.setHeight(size);
     }
+
+    /**Update the state of the Bar
+     *
+     * @param data a {@link ce.client.GameItems.GameData} instance that contains the state of the bar as a {@link  ce.client.GameItems.GameData.paddle} object
+     */
     public void update(GameData data){
         this.setPosX(data.getPaddleLeft());
         this.setSize(data.getPaddleSize());

@@ -39,6 +39,10 @@ public class Ball {
         return this.id;
     }
 
+    /**Update the state of the ball
+     *
+     * @param ball a {@link ce.client.GameItems.GameData.ball} item
+     */
     public void update(GameData.ball ball){
         setPosX(ball.x);
         setPosY(ball.y);

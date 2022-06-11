@@ -59,20 +59,28 @@ public class MainWindow {
         window.show();
     }
 
+    /**
+     * Update the Scene elements with the {@code Gamedata} information
+     */
     public static void updateScene() {
 
-        for (Integer i = 0; i < data.blocks.length-1; i++) {
-            for (Integer j = 0; j < data.blocks[i].length-1; j++) {
+        for (Integer i = 0; i < data.blocks.length - 1; i++) {
+            for (Integer j = 0; j < data.blocks[i].length - 1; j++) {
                 gameScene.getBlocks().get(i).get(j).update(data.blocks[i][j]);
             }
         }
         gameScene.getPlayer().update(data);
-        for (Integer i = 0; i < data.getBallsLength()-1; i++) {
+        for (Integer i = 0; i < data.getBallsLength() - 1; i++) {
             gameScene.getBalls().get(i).update(data.getBalls()[i]);
         }
     }
 
-    public static void initClient(){
+    /**
+     * Init the client as a Client for the server and start to  update the Scene elements with the information
+     * recieved from server.
+     * Init the Socket as a client Socket
+     */
+    public static void initClient() {
 
         try {
             socket = SocketFactory.clientSocket(0);
@@ -84,7 +92,7 @@ public class MainWindow {
                 String json = socket.recieve();
                 data.update(json);
                 updateScene();
-                if (socket.send(gameScene.getPlayer().getDirection())==-1){
+                if (socket.send(gameScene.getPlayer().getDirection()) == -1) {
                     System.out.println("Error sending msg to server");
                     break;
                 }
