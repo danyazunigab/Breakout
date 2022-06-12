@@ -7,7 +7,13 @@
 #include "Adapter.h"
 #include "../libs/cJSON.h"
 
+/**Function that takes a gamedata structure and generate it json string equivalent
+ *
+ * @param data a gamedata structure
+ * @return char Array that contains the gamedata info in Json format
+ */
 char *struct_to_Json(struct gamedata *data) {
+    //Null pointers to check errors
     char *string = NULL;
     cJSON *json = NULL;
     cJSON *blocks = NULL;
@@ -15,6 +21,7 @@ char *struct_to_Json(struct gamedata *data) {
     cJSON *balls = NULL;
     cJSON_bool check;
     json = cJSON_CreateObject();
+
     if (json == NULL) {
         printf("error creating the json");
         exit(-3);
@@ -35,7 +42,7 @@ char *struct_to_Json(struct gamedata *data) {
             exit(-3);
         }
 
-       cJSON_AddItemToArray(blocks, row);
+        cJSON_AddItemToArray(blocks, row);
     }
 
     paddle = cJSON_AddObjectToObject(json, "paddle");

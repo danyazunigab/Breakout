@@ -9,21 +9,21 @@
 
 #include "../Consts.h"
 struct paddle{
-    int left;
-    int rigth;
+    int left;/**< int that indicate the left position of the bar */
+    int rigth;/**< int that indicate the right position of the bar */
 };
 struct ball{
-    int x;
-    int y;
+    int x;/**< int that indicate the x position of the ball */
+    int y;/**< int that indicate the y position of the ball */
 };
 
 struct gamedata{
-    int blocks[LINES][ROWS];
-    struct paddle paddle;
+    int blocks[LINES][ROWS];/**< int matrix that indicate the value of the block*/
+    struct paddle paddle;/**< paddle struct that represent the bar */
 
 //Hay que rescribir este como una linkedlist
-    struct ball *ball;
-    int ball_number;
+    struct ball *ball;/**< paddle struct that represent  */
+    int ball_number;/**< int the number of balls*/
 
-    char *msg;
+    char *msg;/**< char Array that indicate a msg for the client */
 };

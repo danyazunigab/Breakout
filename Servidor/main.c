@@ -7,6 +7,11 @@
 #include "./Socket/Socket.c"
 #include <stdio.h>
 
+/**Function to move paddle according to the msg received from the Socket
+ *dont recieved a new msg, just used the value storage in the socket.
+ * @param socket Socket that recieved the order
+ * @param data gamdata that contaisn the paddle
+ */
 void move_paddle(struct serversocket* socket, struct gamedata* data) {
     if (socket->buffer == NULL) {
         return;

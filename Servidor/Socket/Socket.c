@@ -9,16 +9,20 @@
 #include <stdio.h>
 
 struct serversocket {
-    int *socket;
-    char *buffer;
+    int *socket;/**< int that indicate file descriptor of the socket */
+    char *buffer;/**< char array that storage the msg received */
 
-    int amount_viewers;
-    struct sockaddr_in *viewers;
+    int amount_viewers;/**< int that indicate the amount of viewers */
+    struct sockaddr_in *viewers;/**< struct array that contains the viewers direction */
 
-    struct sockaddr_in *client;
+    struct sockaddr_in *client;/**< struct pointer to the client direction */
 };
 
-
+/**Function that create a functional sockaddr_in for the server socket
+ *
+ * @param port port to use, expected 8080
+ * @return sockaddr_in structure ready to use un a server socket
+ */
 struct sockaddr_in address(int port) {
     struct sockaddr_in address;
     address.sin_family = (AF_INET);
@@ -26,6 +30,13 @@ struct sockaddr_in address(int port) {
     address.sin_port = htons(port);
     return address;
 }
+
+/** Function that Create a Server Socket with a port
+ *
+ * @param port port to create the socket
+ * @return int that indicate the file descriptor od the server socket
+ */
+
 
 int server_socket(int port) {
     SOCKET file_descriptor;
@@ -46,6 +57,11 @@ int server_socket(int port) {
     return file_descriptor;
 }
 
+/**Function that Create a serversocket structure ready to work as a Server
+ *
+ * @param port port to use in the socket
+ * @return serversocket structure with no buffer
+ */
 struct serversocket *create_socket(int port) {
     WSADATA wsa;
     WSAStartup(MAKEWORD(2, 2), &wsa);
@@ -59,6 +75,11 @@ struct serversocket *create_socket(int port) {
     return socket;
 }
 
+/**Function to add a viewer to a server socket structure
+ *Client automatically replace the old one
+ * @param socket serversocket who add the viewer
+ * @param viewer viewer addres to add
+ */
 void add_viewer(struct serversocket *socket, struct sockaddr_in viewer) {
     struct sockaddr_in *new_viewers = calloc(socket->amount_viewers + 1, sizeof(struct sockaddr_in));
     for (int i = 0; i < socket->amount_viewers; ++i) {
@@ -71,6 +92,11 @@ void add_viewer(struct serversocket *socket, struct sockaddr_in viewer) {
     socket->amount_viewers++;
 }
 
+/**Receive function
+ *
+ * @param socket Socket that expected to received a msg
+ * @return a pointer to the char Array that contains the msg received
+ */
 char *recieve(struct serversocket *socket) {
     if (socket->buffer != NULL) {
         free(socket->buffer);
@@ -118,6 +144,11 @@ char *recieve(struct serversocket *socket) {
     return socket->buffer;
 }
 
+/** Function that send a msg to all the viewers and to te client
+ *
+ * @param socket Socket that storage the viewers and the client.
+ * @param msg msg to send as a char array.
+ */
 void sendtoall(struct serversocket *socket, char msg[]) {
     int msg_length = strlen(msg);
 

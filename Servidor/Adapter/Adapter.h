@@ -9,7 +9,4 @@
 
 #include "../Gamedata/Game_data.h"
 
-struct gamedata Json_to_struct(char* json);
-
-
-char* struct_to_Json(struct gamedata * data);
+char *struct_to_Json(struct gamedata *data);
