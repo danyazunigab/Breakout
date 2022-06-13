@@ -8,7 +8,7 @@
 #include "Engine/Engine.h"
 #include <stdio.h>
 #include "./Engine/Engine.h"
-
+#include "./Double linked list/DLL.h"
 
 int main() {
 
@@ -21,6 +21,12 @@ int main() {
     json = struct_to_Json(&test);
     printf("%s", json);
     printf("adapter is working\n");
+
+    printf("testing DLL is working\n");
+    struct head *DLL = DLL_test();
+    printf("DLL is working\n");
+
+
 
 //Obtener la estructura que maneja el envio de informacion.
     struct serversocket *server_socket = create_socket(8080);

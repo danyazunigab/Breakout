@@ -13,5 +13,5 @@ add_executable(Server
         Servidor/libs/cJSON.c Servidor/libs/cJSON.h
         Servidor/Socket/Socket.c Servidor/Socket/Socket.h
         Servidor/Engine/Engine.c Servidor/Engine/Engine.h
-        Servidor/Consts.c Servidor/Consts.h)
+        Servidor/Consts.c Servidor/Consts.h "Servidor/Double linked list/DLL.c" "Servidor/Double linked list/DLL.h")
 target_link_libraries(Server ws2_32)
