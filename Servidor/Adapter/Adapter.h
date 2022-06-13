@@ -6,7 +6,7 @@
 #ifndef CLIENT_ADAPTER_H
 #define CLIENT_ADAPTER_H
 #endif //CLIENT_ADAPTER_H
-
 #include "../Gamedata/Game_data.h"
+
 
 char *struct_to_Json(struct gamedata *data);

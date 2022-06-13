@@ -7,5 +7,3 @@
 
 #endif //BREAKOUT_MAIN_H
 
-struct gamedata  test_adapter(void);
-int main(void);

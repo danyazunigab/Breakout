@@ -11,5 +11,7 @@ add_executable(Server
         Servidor/Gamedata/Game_data.c Servidor/Gamedata/Game_data.h
         Servidor/Adapter/Adapter.c Servidor/Adapter/Adapter.h
         Servidor/libs/cJSON.c Servidor/libs/cJSON.h
-        Servidor/Socket/Socket.h)
+        Servidor/Socket/Socket.c Servidor/Socket/Socket.h
+        Servidor/Engine/Engine.c Servidor/Engine/Engine.h
+        Servidor/Consts.c Servidor/Consts.h)
 target_link_libraries(Server ws2_32)

@@ -8,15 +8,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-struct serversocket {
-    int *socket;/**< int that indicate file descriptor of the socket */
-    char *buffer;/**< char array that storage the msg received */
 
-    int amount_viewers;/**< int that indicate the amount of viewers */
-    struct sockaddr_in *viewers;/**< struct array that contains the viewers direction */
-
-    struct sockaddr_in *client;/**< struct pointer to the client direction */
-};
 
 /**Function that create a functional sockaddr_in for the server socket
  *

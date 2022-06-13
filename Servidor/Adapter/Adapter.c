@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "Adapter.h"
 #include "../libs/cJSON.h"
-
+#include "../Consts.h"
 /**Function that takes a gamedata structure and generate it json string equivalent
  *
  * @param data a gamedata structure
@@ -36,7 +36,12 @@ char *struct_to_Json(struct gamedata *data) {
     }
 
     for (int i = 0; i < LINES; ++i) {
-        cJSON *row = cJSON_CreateIntArray(data->blocks[i], ROWS);
+        int tmpArray[ROWS];
+        for (int j = 0; j < ROWS; ++j) {
+            tmpArray[j]= data->blocks[i][j].value;
+        }
+        cJSON *row = cJSON_CreateIntArray(tmpArray,ROWS);
+
         if (row == NULL) {
             printf("error creating the row number %i", i);
             exit(-3);
