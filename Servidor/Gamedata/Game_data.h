@@ -3,7 +3,7 @@
 //
 
 #include "../Consts.h"
-
+#include "../Double linked list/DLL.h"
 #ifndef CLIENT_GAME_DATA_H
 #define CLIENT_GAME_DATA_H
 
@@ -31,9 +31,7 @@ struct gamedata{
     struct bricks  **blocks;
     struct paddle paddle;
 
-//Hay que rescribir este como una linkedlist
-    struct ball *ball;
-    int ball_number;
+    struct head *balls;
 
     int lives;
     double points;

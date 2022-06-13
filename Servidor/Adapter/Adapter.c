@@ -7,6 +7,7 @@
 #include "Adapter.h"
 #include "../libs/cJSON.h"
 #include "../Consts.h"
+
 /**Function that takes a gamedata structure and generate it json string equivalent
  *
  * @param data a gamedata structure
@@ -38,9 +39,9 @@ char *struct_to_Json(struct gamedata *data) {
     for (int i = 0; i < LINES; ++i) {
         int tmpArray[ROWS];
         for (int j = 0; j < ROWS; ++j) {
-            tmpArray[j]= data->blocks[i][j].value;
+            tmpArray[j] = data->blocks[i][j].value;
         }
-        cJSON *row = cJSON_CreateIntArray(tmpArray,ROWS);
+        cJSON *row = cJSON_CreateIntArray(tmpArray, ROWS);
 
         if (row == NULL) {
             printf("error creating the row number %i", i);
@@ -72,14 +73,18 @@ char *struct_to_Json(struct gamedata *data) {
         printf("error creating the balls");
         exit(-3);
     }
-    for (int i = 0; i < data->ball_number; ++i) {
+    //puntero temporal para iterar.
+    struct node *nodepointer;
+    ForEachDLL(nodepointer, data->balls) {
+        //casteo a ball;
+        struct ball *ball1 = nodepointer->value;
         cJSON *ball = cJSON_CreateObject();
-        if (cJSON_AddNumberToObject(ball, "x", data->ball[i].x)
+        if (cJSON_AddNumberToObject(ball, "x", ball1->x)
             == NULL) {
             printf("error adding x to ball");
             exit(-3);
         }
-        if (cJSON_AddNumberToObject(ball, "y", data->ball[i].y)
+        if (cJSON_AddNumberToObject(ball, "y", ball1->y)
             == NULL) {
             printf("error adding the y to ball");
             exit(-3);

@@ -27,14 +27,18 @@ void move_paddle(struct serversocket *socket, struct gamedata *data) {
     }
 };
 
-struct gamedata test_adapter(void) {
+struct gamedata Init_gamedata(void) {
     struct paddle paddle = {300, 450};
+    struct head *balls = malloc(sizeof(struct head));
+    DLL_zero(balls);
     struct ball *ball = malloc(sizeof(struct ball));
     ball->y = 40;
     ball->x = 40;
+    push(balls,ball);
+
     struct gamedata data = {
             create_blocks(),//Keep in mind that this assign memory space, to avoid memory leak reuse the struct with reset_block
-            paddle, ball, 1, "pajuila"
+            paddle, balls, 1, 0, "pajuila"
     };
     return data;
 }
@@ -78,7 +82,7 @@ void Interpretated(struct gamedata *data) {
     int command;
     int fila;
     int columna;
-    while (scanf("%d%d%d", &command, &fila, &columna) != 0){
+    while (scanf("%d%d%d", &command, &fila, &columna) != 0) {
 
     }
 }

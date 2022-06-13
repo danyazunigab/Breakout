@@ -83,18 +83,30 @@ void *delete_node(struct head *DLL, struct node *pointer) {
 
 
 struct head *DLL_test() {
-    struct head *DLLpointer= malloc(sizeof(struct head));
-    struct head newLL = {NULL, NULL, 0};
-    *DLLpointer=newLL;
-    int* pointer= malloc(sizeof(int)*3);
-    for (int i = 0; i <3; ++i) {
-        pointer[i]=i;
-        push(&newLL,  pointer+i);
+    struct head *DLLpointer = malloc(sizeof(struct head));
+    DLLpointer->start = NULL;
+    DLLpointer->last = NULL;
+    DLLpointer->quantity = 0;
+    int *pointer = malloc(sizeof(int) * 3);
+    for (int i = 0; i < 3; ++i) {
+        pointer[i] = i;
+        push(DLLpointer, pointer + i);
     }
-    struct node *actualnode=NULL;
-    *DLLpointer=newLL;
-    ForEachDLL(actualnode,DLLpointer){
-        printf("%i,",*(int*)actualnode->value);
+    struct node *actualnode = NULL;
+    delete_by_value(DLLpointer, pointer + 1);
+
+    ForEachDLL(actualnode, DLLpointer) {
+        printf("%i,", *(int *) actualnode->value);
     }
     return DLLpointer;
+};
+
+/**init to zero a head
+ * to reuse first destroy all the node al liberate they space.
+ * @param head DLL head
+ */
+void DLL_zero(struct head * head){
+    head->start=NULL;
+    head->last=NULL;
+    head->quantity=0;
 };

@@ -9,7 +9,7 @@
 
 void move_paddle(struct serversocket *socket, struct gamedata *data);
 
-struct gamedata test_adapter(void);
+struct gamedata Init_gamedata(void);
 
 int main(void);
 

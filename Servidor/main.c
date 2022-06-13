@@ -8,14 +8,13 @@
 #include "Engine/Engine.h"
 #include <stdio.h>
 #include "./Engine/Engine.h"
-#include "./Double linked list/DLL.h"
 
 int main() {
 
 
     printf("init\n");
     printf("testing adapter is working\n");
-    struct gamedata test = test_adapter();
+    struct gamedata test = Init_gamedata();
     char *json = NULL;
 
     json = struct_to_Json(&test);

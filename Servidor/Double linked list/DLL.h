@@ -35,23 +35,25 @@ struct head {
  * Insert a node at the start, dont reserved memory for the storage value
  * @param pointer void pointer to the value to storage
  */
-void push(struct head*, void *pointer);
+void push(struct head *, void *pointer);
 
 /** delete a node by searching it value
  *
  * @param pointer a void pointer, dont deallocate memory for the storage value
  * @return void pointer to the value contained in the node, Null if not founded
  */
-void *delete_by_value(struct head*, void *pointer);
+void *delete_by_value(struct head *, void *pointer);
 
 /**
  * Delete a node by searching the node, dont deallocate memory for the storage value
  * @param pointer a node pointer
  * @return void pointer to the value contained in the node, Null if not founded
  */
-void *delete_by_node(struct head*, struct node *pointer);
+void *delete_by_node(struct head *, struct node *pointer);
 
 
-void *delete_node(struct head*, struct node *pointer);
+void *delete_node(struct head *, struct node *pointer);
 
 struct head *DLL_test();
+
+void DLL_zero(struct head *);
