@@ -105,8 +105,16 @@ struct head *DLL_test() {
  * to reuse first destroy all the node al liberate they space.
  * @param head DLL head
  */
-void DLL_zero(struct head * head){
-    head->start=NULL;
-    head->last=NULL;
-    head->quantity=0;
+void DLL_zero(struct head *head) {
+    head->start = NULL;
+    head->last = NULL;
+    head->quantity = 0;
 };
+
+/**
+ * Clean one NULL pointers nodes
+ * @param DLL
+ */
+void DLL_Clean(struct head *DLL) {
+    delete_by_value(DLL, NULL);
+}

@@ -105,7 +105,6 @@ char *recieve(struct serversocket *socket) {
         printf("socket rcvfrom error\n");
     }
 
-    printf("%s\n", buffer);
     if (socket->client != NULL && client.sin_port == socket->client->sin_port) {
         char *newbuffer = malloc(sizeof(char *) * (msg_size + 1));
         (*socket).buffer = newbuffer;

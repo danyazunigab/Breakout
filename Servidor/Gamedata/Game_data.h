@@ -21,10 +21,14 @@ struct bricks {
 struct paddle{
     int left;
     int rigth;
+    int top;
 };
 struct ball{
     int x;
     int y;
+    float vx;
+    float vy;
+    float factor;
 };
 
 struct gamedata{
@@ -38,3 +42,8 @@ struct gamedata{
 
     char *msg;
 };
+
+struct gamedata Init_gamedata(void);
+void reset_blocks(struct gamedata*);
+struct bricks** create_blocks();
+struct ball * create_ball();

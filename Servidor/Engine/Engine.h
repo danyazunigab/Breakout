@@ -9,9 +9,18 @@
 
 void move_paddle(struct serversocket *socket, struct gamedata *data);
 
-struct gamedata Init_gamedata(void);
+void Interpretate(struct gamedata *data);
 
-int main(void);
+void next_frame(struct gamedata *data);
 
-void reset_blocks(struct gamedata*);
-struct bricks** create_blocks();
+void move_ball(struct ball *ball);
+
+struct bricks* check_collision(struct ball*, struct bricks  **);
+
+void collision(struct ball*, struct bricks*,struct gamedata*);
+
+void check_limits(struct ball*,struct node*);
+
+void paddle_collision(struct ball*, struct paddle*);
+
+

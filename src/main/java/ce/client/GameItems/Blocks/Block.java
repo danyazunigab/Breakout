@@ -63,5 +63,6 @@ public class Block {
 
     public void update(Integer value) {
         this.value = value;
+        this.rectangle.setVisible(value != -1);
     }
 }

@@ -16,9 +16,6 @@
  */
 #define ForEachDLL(node, LL) for(node = (LL != NULL) ? LL->start : NULL; node != NULL; node = node->next)
 
-#define cJSON_ArrayForEach(element, array) for(element = (array != NULL) ? (array)->child : NULL; element != NULL; element = element->next)
-
-
 struct node {
     struct node *next;
     struct node *previous;
@@ -57,3 +54,5 @@ void *delete_node(struct head *, struct node *pointer);
 struct head *DLL_test();
 
 void DLL_zero(struct head *);
+
+void DLL_Clean(struct head*);

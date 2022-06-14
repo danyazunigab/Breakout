@@ -9,21 +9,27 @@
 #include <stdio.h>
 #include "./Engine/Engine.h"
 
+
 int main() {
 
 
     printf("init\n");
     printf("testing adapter is working\n");
-    struct gamedata test = Init_gamedata();
+    struct gamedata data = Init_gamedata();
     char *json = NULL;
 
-    json = struct_to_Json(&test);
+    json = struct_to_Json(&data);
     printf("%s", json);
     printf("adapter is working\n");
 
     printf("testing DLL is working\n");
     struct head *DLL = DLL_test();
     printf("DLL is working\n");
+
+    printf("testing Interpreter is working\n");
+    HANDLE IOThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE) Interpretate, &data, 0, 0);
+
+    printf("Interpreter is working\n");
 
 
 
@@ -36,24 +42,16 @@ int main() {
     printf("client connected \n");
 
     while (TRUE) {
-        printf("Preparing msg\n");
-        json = struct_to_Json(&test);
-        printf("%s", json);
-
-        printf("sending msg\n");
+        json = struct_to_Json(&data);
         sendtoall(server_socket, json);
-        printf("%i,%i \n", server_socket->socket, WSAGetLastError());
 
-        printf("reciving msg\n");
+        next_frame(&data);
+
         recieve(server_socket);
-        printf("%s", server_socket->buffer);
-        printf("%i,%i \n", server_socket->socket, WSAGetLastError());
-
-
         if (server_socket->buffer != NULL && strncmp((const char *) server_socket->buffer, "STOP", 4) == 0) {
             break;
         }
-        move_paddle(server_socket,&test);
+        move_paddle(server_socket, &data);
     }
     return 0;
 }

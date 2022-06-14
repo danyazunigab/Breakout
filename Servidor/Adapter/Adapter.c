@@ -39,7 +39,7 @@ char *struct_to_Json(struct gamedata *data) {
     for (int i = 0; i < LINES; ++i) {
         int tmpArray[ROWS];
         for (int j = 0; j < ROWS; ++j) {
-            tmpArray[j] = data->blocks[i][j].value;
+            tmpArray[j] = data->blocks[i][j].state;
         }
         cJSON *row = cJSON_CreateIntArray(tmpArray, ROWS);
 
@@ -74,7 +74,7 @@ char *struct_to_Json(struct gamedata *data) {
         exit(-3);
     }
     //puntero temporal para iterar.
-    struct node *nodepointer;
+    struct node *nodepointer=NULL;
     ForEachDLL(nodepointer, data->balls) {
         //casteo a ball;
         struct ball *ball1 = nodepointer->value;
