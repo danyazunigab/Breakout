@@ -36,12 +36,12 @@ char *struct_to_Json(struct gamedata *data) {
         exit(-3);
     }
 
-    for (int i = 0; i < LINES; ++i) {
-        int tmpArray[ROWS];
-        for (int j = 0; j < ROWS; ++j) {
+    for (int i = 0; i < ROWS; ++i) {
+        int tmpArray[COL];
+        for (int j = 0; j < COL; ++j) {
             tmpArray[j] = data->blocks[i][j].state;
         }
-        cJSON *row = cJSON_CreateIntArray(tmpArray, ROWS);
+        cJSON *row = cJSON_CreateIntArray(tmpArray, COL);
 
         if (row == NULL) {
             printf("error creating the row number %i", i);
@@ -93,7 +93,7 @@ char *struct_to_Json(struct gamedata *data) {
 
     }
 
-    string = cJSON_Print(json);
+    string = cJSON_PrintUnformatted(json);
     if (string == NULL) {
         printf("error transforming the json objecto to string");
     }

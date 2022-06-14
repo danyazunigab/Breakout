@@ -12,7 +12,7 @@ public class Bar {
         this.id = id;
         this.posX = posX;
         this.posY = posY;
-        this.rectangle = new Rectangle(100,30);
+        this.rectangle = new Rectangle(100,20);
         this.rectangle.setX(posX);
         this.rectangle.setY(posY);
         this.rectangle.setFill(Color.web("#F66B0E"));
@@ -41,7 +41,7 @@ public class Bar {
     }
 
     public void setSize(Integer size){
-        this.rectangle.setHeight(size);
+        this.rectangle.setWidth(size);
     }
 
     /**Update the state of the Bar

@@ -44,7 +44,7 @@ int main() {
         sendtoall(server_socket, json);
 
         next_frame(&data);
-
+        printf("%s\n", json);
         recieve(server_socket);
         Sleep(20);
         if (server_socket->buffer != NULL && strncmp((const char *) server_socket->buffer, "STOP", 4) == 0) {

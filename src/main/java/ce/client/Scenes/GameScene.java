@@ -71,7 +71,7 @@ public class GameScene extends Scene{
         this.bars.add(this.player);
     }
     private void drawBall(int id){
-        Ball ball = new Ball(id,400,700);
+        Ball ball = new Ball(id,400,750);
         this.balls.add(ball);
         this.group.getChildren().add(ball.getCircle());
     }

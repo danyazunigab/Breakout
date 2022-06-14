@@ -23,8 +23,8 @@ struct gamedata Init_gamedata(void) {
 
 
 void reset_blocks(struct gamedata *data) {
-    for (int i = 0; i < LINES; ++i) {
-        for (int j = 0; j < ROWS; ++j) {
+    for (int i = 0; i < ROWS; ++i) {
+        for (int j = 0; j < COL; ++j) {
             data->blocks[i][j].value = 0;
         }
     }
@@ -32,12 +32,12 @@ void reset_blocks(struct gamedata *data) {
 
 struct bricks **create_blocks() {
     struct bricks **blocks = malloc(ROWS * sizeof(struct bricks *));
-    struct bricks *block = calloc(ROWS * LINES, sizeof(struct bricks));
+    struct bricks *block = calloc(COL * ROWS, sizeof(struct bricks));
     for (int i = 0; i < ROWS; ++i) {
-        blocks[i] = block + i * LINES;
+        blocks[i] = block + i * COL;
     }
-    for (int i = 0; i < LINES; ++i) {
-        for (int j = 0; j < ROWS; ++j) {
+    for (int i = 0; i < ROWS; ++i) {
+        for (int j = 0; j < COL; ++j) {
             blocks[i][j].state = (i*j)%5;
             blocks[i][j].left = 70 * j + 16;
             blocks[i][j].rigth = 70 * j + 16 + 68;
@@ -57,9 +57,9 @@ struct ball * create_ball(){
 }
 
 void reset_ball(struct ball*ball){
-    ball->y = 600;
-    ball->x = 400;
+    ball->y = 650;
+    ball->x = 450;
     ball->vx=1.2;
     ball->vy=-1.2;
-    ball->factor=1.2;
+    ball->factor=2;
 };
