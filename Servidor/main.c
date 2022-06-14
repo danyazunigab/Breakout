@@ -8,7 +8,7 @@
 #include "Engine/Engine.h"
 #include <stdio.h>
 #include "./Engine/Engine.h"
-
+#include <windows.h>
 
 int main() {
 
@@ -27,11 +27,10 @@ int main() {
     printf("DLL is working\n");
 
     printf("testing Interpreter is working\n");
+    //hilo del interprete no borrar
     HANDLE IOThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE) Interpretate, &data, 0, 0);
 
     printf("Interpreter is working\n");
-
-
 
 //Obtener la estructura que maneja el envio de informacion.
     struct serversocket *server_socket = create_socket(8080);
@@ -40,7 +39,6 @@ int main() {
 //Conectar el cliente, Siempre el primer mensaje recibido por el servidor ha de ser un msj del cliente con ''
     recieve(server_socket);
     printf("client connected \n");
-
     while (TRUE) {
         json = struct_to_Json(&data);
         sendtoall(server_socket, json);
@@ -48,10 +46,12 @@ int main() {
         next_frame(&data);
 
         recieve(server_socket);
+        Sleep(20);
         if (server_socket->buffer != NULL && strncmp((const char *) server_socket->buffer, "STOP", 4) == 0) {
             break;
         }
         move_paddle(server_socket, &data);
+
     }
     return 0;
 }

@@ -24,7 +24,9 @@ public class GameScene extends Scene{
         this.drawBlocks(blockMatrix);
         //this.drawBars(barList);
         this.drawPlayer();
-        this.drawBall(0);
+        for (int i = 0; i < 3; i++) {
+            this.drawBall(i);
+        }
         this.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -69,9 +71,10 @@ public class GameScene extends Scene{
         this.bars.add(this.player);
     }
     private void drawBall(int id){
-        Ball ball = new Ball(id,(800/2)-10,645);
-        this.group.getChildren().add(ball.getCircle());
+        Ball ball = new Ball(id,400,700);
         this.balls.add(ball);
+        this.group.getChildren().add(ball.rectangle);
+        this.group.getChildren().add(ball.getCircle());
     }
     public int getBallQuantity(){
         return this.balls.size();

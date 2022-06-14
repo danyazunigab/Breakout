@@ -19,7 +19,7 @@ struct bricks* check_collision(struct ball*, struct bricks  **);
 
 void collision(struct ball*, struct bricks*,struct gamedata*);
 
-void check_limits(struct ball*,struct node*);
+void check_limits(struct ball*,struct node*, struct gamedata*);
 
 void paddle_collision(struct ball*, struct paddle*);
 

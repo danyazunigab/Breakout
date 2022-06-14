@@ -13,23 +13,24 @@ public class Ball {
         this.id = id;
         this.posX = posX;
         this.posY = posY;
-        this.circle = new Circle(posX,posY,20);
-        this.circle.setLayoutX(posX);
-        this.circle.setLayoutY(posY);
+        this.circle = new Circle(posX,posY,7);
+        this.circle.setCenterX(posX);
+        this.circle.setCenterY(posY);
         this.circle.setFill(Color.web("#EFEFEF"));
+        this.circle.setStroke(Color.WHITESMOKE );
     }
     public Circle getCircle(){
         return this.circle;
     }
     public void setPosX(int newPosX) {
-        this.circle.setLayoutX(newPosX);
+        this.circle.setCenterX(newPosX);
         this.posX = newPosX;
     }
     public int getPosX(){
         return this.posX;
     }
     public void setPosY(int newPosY){
-        this.circle.setLayoutY(newPosY);
+        this.circle.setCenterY(newPosY);
         this.posY = newPosY;
     }
     public int getPosY(){

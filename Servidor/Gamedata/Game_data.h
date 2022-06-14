@@ -47,3 +47,4 @@ struct gamedata Init_gamedata(void);
 void reset_blocks(struct gamedata*);
 struct bricks** create_blocks();
 struct ball * create_ball();
+void reset_ball(struct ball*);

@@ -64,13 +64,13 @@ public class MainWindow {
      */
     public static void updateScene() {
 
-        for (Integer i = 0; i < data.blocks.length - 1; i++) {
-            for (Integer j = 0; j < data.blocks[i].length - 1; j++) {
+        for (Integer i = 0; i < data.blocks.length ; i++) {
+            for (Integer j = 0; j < data.blocks[i].length ; j++) {
                 gameScene.getBlocks().get(i).get(j).update(data.blocks[i][j]);
             }
         }
         gameScene.getPlayer().update(data);
-        for (Integer i = 0; i < data.getBallsLength() - 1; i++) {
+        for (Integer i = 0; i < data.getBallsLength() ; i++) {
             gameScene.getBalls().get(i).update(data.getBalls()[i]);
         }
     }

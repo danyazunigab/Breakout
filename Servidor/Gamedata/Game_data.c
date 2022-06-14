@@ -38,11 +38,11 @@ struct bricks **create_blocks() {
     }
     for (int i = 0; i < LINES; ++i) {
         for (int j = 0; j < ROWS; ++j) {
-            blocks[i][j].state = 0;
+            blocks[i][j].state = (i*j)%5;
             blocks[i][j].left = 70 * j + 16;
-            blocks[i][j].rigth = 70 * j + 16 + 63;
-            blocks[i][j].top = 70 * i + 16;
-            blocks[i][j].down = 70 * i + 16 + 43;
+            blocks[i][j].rigth = 70 * j + 16 + 68;
+            blocks[i][j].top = 45 * i + 16;
+            blocks[i][j].down = 45 * i + 16 + 43;
             blocks[i][j].value = 150 * floor(i / 2) + 200;
         }
     }
@@ -52,10 +52,14 @@ struct bricks **create_blocks() {
 
 struct ball * create_ball(){
     struct ball *ball = malloc(sizeof(struct ball));
+    reset_ball(ball);
+    return ball;
+}
+
+void reset_ball(struct ball*ball){
     ball->y = 600;
     ball->x = 400;
     ball->vx=1.2;
     ball->vy=-1.2;
-    ball->factor=1;
-    return ball;
-}
+    ball->factor=1.2;
+};
