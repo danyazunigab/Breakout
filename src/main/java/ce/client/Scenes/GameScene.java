@@ -73,7 +73,6 @@ public class GameScene extends Scene{
     private void drawBall(int id){
         Ball ball = new Ball(id,400,700);
         this.balls.add(ball);
-        this.group.getChildren().add(ball.rectangle);
         this.group.getChildren().add(ball.getCircle());
     }
     public int getBallQuantity(){
