@@ -4,57 +4,35 @@ import ce.client.GameItems.Ball;
 import ce.client.GameItems.Bar;
 import ce.client.GameItems.Blocks.Block;
 import ce.client.GameItems.PlayerBar;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 import java.util.LinkedList;
 
-public class GameScene extends Scene{
-    private final LinkedList<LinkedList<Block>> blocks = new LinkedList<>();
-    private final LinkedList<Bar> bars = new LinkedList<>();
-    private final LinkedList<Ball> balls = new LinkedList<>();
-    private final Group group;
-    private PlayerBar player;
-    public GameScene(Group group,int[][] blockMatrix,int[] barList){
+public abstract class GameScene extends Scene{
+    protected final LinkedList<LinkedList<Block>> blocks = new LinkedList<>();
+    protected final LinkedList<Bar> bars = new LinkedList<>();
+    protected final LinkedList<Ball> balls = new LinkedList<>();
+    protected final Group group;
+    protected PlayerBar player;
+    protected boolean exitFlag = false;
+
+    public GameScene(Group group,Integer[][] blockMatrix,Integer[] barList){
         super(group,800,750,Color.web("#112B3C"));
         this.group = group;
         this.drawBlocks(blockMatrix);
-        //this.drawBars(barList);
-        this.drawPlayer();
-        for (int i = 0; i < 3; i++) {
-            this.drawBall(i);
-        }
-        this.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case LEFT, A -> player.moveLeft();
-                    case RIGHT, D -> player.moveRight();
-                    default -> {}
-                }
-            }
-        });
-        this.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case LEFT, A, RIGHT, D -> player.stop();
-                    default -> {}
-                }
-            }
-        });
+        this.drawBalls();
     }
-    private void drawBars(int[] barList){
+    protected void drawBars(Integer[] barList){
         for (int i = 0; i < barList.length; i++) {
             Bar bar = new Bar(i,0,705);
             this.group.getChildren().add(bar.getRectangle());
             this.bars.add(bar);
         }
     }
-    private void drawBlocks(int[][] blockMatrix){
+
+    protected void drawBlocks(Integer[][] blockMatrix){
         for (int j = 0; j < blockMatrix.length; j++) {
             LinkedList<Block> blockRow = new LinkedList<>();
             for (int i = 0; i < blockMatrix[0].length; i++) {
@@ -65,16 +43,26 @@ public class GameScene extends Scene{
             this.blocks.add(blockRow);
         }
     }
-    private void drawPlayer(){
-        this.player = new PlayerBar(-1,(800/2)-50,705);
-        this.group.getChildren().add(this.player.getRectangle());
-        this.bars.add(this.player);
+    protected Ball drawSingularBall(){
+        return new Ball(this.balls.size(),400,645);
     }
-    private void drawBall(int id){
-        Ball ball = new Ball(id,400,750);
-        this.balls.add(ball);
-        this.group.getChildren().add(ball.getCircle());
+    protected void drawBalls(){
+        if(this.balls.isEmpty()){
+            Ball newBall = drawSingularBall();
+            this.balls.add(newBall);
+            this.group.getChildren().add(newBall.getCircle());
+        }else{
+            for (Ball ball: this.balls) {
+                this.group.getChildren().add(ball.getCircle());
+            }
+        }
     }
+    public void addBall(){
+        Ball newBall = drawSingularBall();
+        this.balls.add(newBall);
+        this.drawBalls();
+    }
+
     public int getBallQuantity(){
         return this.balls.size();
     }
@@ -91,7 +79,21 @@ public class GameScene extends Scene{
         return balls;
     }
 
-    public PlayerBar getPlayer() {
-        return player;
+    protected abstract void configureKeyBindings();
+
+    protected void drawPlayer(){
+        this.player = new PlayerBar(-1,(800/2)-50,705);
+        this.group.getChildren().add(this.player.getRectangle());
+        this.bars.add(this.player);
+    }
+    public PlayerBar getPlayer(){
+        return this.player;
+    }
+
+    public boolean getExitFlag() {
+        return this.exitFlag;
+    }
+    protected void exit(){
+        this.exitFlag = true;
     }
 }
