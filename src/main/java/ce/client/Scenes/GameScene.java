@@ -22,7 +22,10 @@ public abstract class GameScene extends Scene{
         super(group,800,750,Color.web("#112B3C"));
         this.group = group;
         this.drawBlocks(blockMatrix);
-        this.drawBalls();
+        for (int i = 0; i < 3; i++) {
+            this.addBall();
+        }
+
     }
     protected void drawBars(Integer[] barList){
         for (int i = 0; i < barList.length; i++) {
@@ -48,9 +51,7 @@ public abstract class GameScene extends Scene{
     }
     protected void drawBalls(){
         if(this.balls.isEmpty()){
-            Ball newBall = drawSingularBall();
-            this.balls.add(newBall);
-            this.group.getChildren().add(newBall.getCircle());
+            this.addBall();
         }else{
             for (Ball ball: this.balls) {
                 this.group.getChildren().add(ball.getCircle());
@@ -60,7 +61,7 @@ public abstract class GameScene extends Scene{
     public void addBall(){
         Ball newBall = drawSingularBall();
         this.balls.add(newBall);
-        this.drawBalls();
+        this.group.getChildren().add(newBall.getCircle());
     }
 
     public int getBallQuantity(){

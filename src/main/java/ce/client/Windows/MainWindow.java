@@ -39,7 +39,8 @@ public class MainWindow {
                 -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
                 -fx-font-weight: bold;
                 -fx-font-size: 1.1em;
-            }""";
+            }
+            """;
 
     public static void launch(Stage window){
 
@@ -106,13 +107,13 @@ public class MainWindow {
      */
     public static void updateScene() {
 
-        for (Integer i = 0; i < data.blocks.length - 1; i++) {
-            for (Integer j = 0; j < data.blocks[i].length - 1; j++) {
+        for (Integer i = 0; i < data.blocks.length ; i++) {
+            for (Integer j = 0; j < data.blocks[i].length ; j++) {
                 showingScene.getBlocks().get(i).get(j).update(data.blocks[i][j]);
             }
         }
         showingScene.getPlayer().update(data);
-        for (Integer i = 0; i < data.getBallsLength() - 1; i++) {
+        for (Integer i = 0; i < data.getBallsLength() ; i++) {
             showingScene.getBalls().get(i).update(data.getBalls()[i]);
         }
     }
