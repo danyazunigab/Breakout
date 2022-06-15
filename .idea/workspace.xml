@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="Breakout" targetName="Server" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="320827a5-bd80-4499-b113-999eab6f9a2e" name="Changes" comment="Refactor gamedata and Adapter to use linkedlist in balls" />
+    <list id="e7e71865-4187-46fb-a5b5-9265ffad0c51" name="ignore" comment="ignore" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="clangTidyViaClangd" value="false" />
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="CMakeLists.txt" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="isriom &lt;62965230+isriom@users.noreply.github.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2022" />
+    <option name="minorVersion" value="1.2" />
+  </component>
+  <component name="ProjectId" id="2AH940G3DORdOfPzu1svRXrv11r" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/2001i/IdeaProjects/client/Servidor/Adapter/Adapter.c&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.intentionPowerPack&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\2001i\IdeaProjects\client\Servidor\libs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\2001i\IdeaProjects\client\Servidor\Gamedata" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MainApp">
+    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ce.client.MainApp" />
+      <module name="client.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ce.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Breakout" TARGET_NAME="Server" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Breakout" RUN_TARGET_NAME="Server">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.MainApp" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="320827a5-bd80-4499-b113-999eab6f9a2e" name="Changes" comment="" />
+      <changelist id="e7e71865-4187-46fb-a5b5-9265ffad0c51" name="ignore" comment="" />
+      <created>1654655448350</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654655448350</updated>
+      <workItem from="1654655455145" duration="8625000" />
+      <workItem from="1654716461288" duration="2436000" />
+      <workItem from="1654749537936" duration="1488000" />
+      <workItem from="1654807512017" duration="5272000" />
+      <workItem from="1654888068536" duration="572000" />
+      <workItem from="1654890474122" duration="224000" />
+      <workItem from="1654909635759" duration="51000" />
+      <workItem from="1654984525292" duration="6438000" />
+      <workItem from="1654991567311" duration="8618000" />
+      <workItem from="1655098461568" duration="7669000" />
+      <workItem from="1655130390834" duration="10530000" />
+      <workItem from="1655150095711" duration="17370000" />
+      <workItem from="1655179287528" duration="1631000" />
+      <workItem from="1655219620602" duration="4774000" />
+      <workItem from="1655234768746" duration="1715000" />
+      <workItem from="1655259911096" duration="3994000" />
+    </task>
+    <task id="LOCAL-00001" summary="Adapter from server conditions to json&#10;Use CJSON to transfor to JSON">
+      <created>1654728209359</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654728209359</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Server-client connection.  &#10;added structures to game implementation&#10;Game data balls need to convert to linkedlist, but let the game implementation to do it">
+      <created>1654898832152</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654898832152</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Java Socket /Adapter documentation">
+      <created>1654991007741</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654991007741</updated>
+    </task>
+    <task id="LOCAL-00004" summary="C server Socket documentation">
+      <created>1655005148857</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655005148858</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Re format of game data to add a structure to blocks">
+      <created>1655106222650</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655106222650</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Double linked list in C">
+      <created>1655140513575</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655140513575</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Refactor gamedata and Adapter to use linkedlist in balls">
+      <created>1655142186540</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655142186540</updated>
+    </task>
+    <task id="LOCAL-00008" summary="bugfix ball not display">
+      <created>1655229221092</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655229221092</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Bugfix of bugfix">
+      <created>1655229292034</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1655229292034</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Bug fix copy ball counts to Game Over">
+      <created>1655267544141</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1655267544141</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add Game Over and WIN and go to next level">
+      <created>1655270458679</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1655270458679</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Adapter from server conditions to json&#10;Use CJSON to transfor to JSON" />
+    <MESSAGE value="Server-client connection.  &#10;added structures to game implementation&#10;Game data balls need to convert to linkedlist, but let the game implementation to do it" />
+    <MESSAGE value="Java Socket /Adapter documentation" />
+    <MESSAGE value="C server Socket documentation" />
+    <MESSAGE value="Re format of game data to add a structure to blocks" />
+    <MESSAGE value="Double linked list in C" />
+    <MESSAGE value="Refactor gamedata and Adapter to use linkedlist in balls" />
+    <MESSAGE value="bugfix ball not display" />
+    <MESSAGE value="Bugfix of bugfix" />
+    <MESSAGE value="Bug fix copy ball counts to Game Over" />
+    <MESSAGE value="Add Game Over and WIN and go to next level" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Game Over and WIN and go to next level" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="*data-&gt;blocks @ 8" />
+        <watch expression="*(*data-&gt;blocks @ 8[0]) @ 11" />
+        <watch expression="*data-&gt;blocks @ 8[6]" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
