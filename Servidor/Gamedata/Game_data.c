@@ -42,7 +42,7 @@ struct bricks **create_blocks() {
 
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COL; ++j) {
-            blocks[i][j].state = -1;
+            blocks[i][j].state = 0;
             blocks[i][j].left = 70 * j + 16;
             blocks[i][j].rigth = 70 * j + 16 + 68;
             blocks[i][j].top = 45 * i + 16;

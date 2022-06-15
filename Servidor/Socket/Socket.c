@@ -42,6 +42,7 @@ int server_socket(int port) {
 
     if (bind(file_descriptor, (struct sockaddr *) &ip, sizeof(ip)) != 0) {
         printf("error in socket bind");
+        printf("%i",WSAGetLastError());
         return 0;
     } else {
         return file_descriptor;

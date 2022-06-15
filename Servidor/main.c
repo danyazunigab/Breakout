@@ -11,8 +11,6 @@
 #include <windows.h>
 
 int main() {
-
-    initConstant();
     printf("init\n");
     printf("testing adapter is working\n");
     struct gamedata data = Init_gamedata();

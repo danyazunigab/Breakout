@@ -85,6 +85,10 @@ public final class GameData {
         ball[] balls;
         @JsonProperty("msg")
         String msg;
+        @JsonProperty("life")
+        Integer lives;
+        @JsonProperty("points")
+        Integer points;
     }
 
     public Integer[][] getBlocks() {

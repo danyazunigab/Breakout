@@ -84,9 +84,6 @@ struct bricks *check_collision(struct ball *ball, struct bricks **bricks) {
             if (block.left < ball->x && block.rigth > ball->x) {
                 //eje Y
                 if (block.down > ball->y && block.top < ball->y) {
-                    if (block.state != -1) {
-                        printf(" %i,%i", i, j);
-                    }
                     return &bricks[i][j];
                 }
             }
