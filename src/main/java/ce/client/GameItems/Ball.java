@@ -4,10 +4,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class Ball {
-    private final int id;
+    private final Integer id;
     private final Circle circle;
-    private int posX;
-    private int posY;
+    private Integer posX;
+    private Integer posY;
 
     public Ball(int id,int posX,int posY){
         this.id = id;
@@ -26,17 +26,17 @@ public class Ball {
         this.circle.setCenterX(newPosX);
         this.posX = newPosX;
     }
-    public int getPosX(){
+    public Integer getPosX(){
         return this.posX;
     }
     public void setPosY(int newPosY){
         this.circle.setCenterY(newPosY);
         this.posY = newPosY;
     }
-    public int getPosY(){
+    public Integer getPosY(){
         return this.posY;
     }
-    public int getID(){
+    public Integer getID(){
         return this.id;
     }
 

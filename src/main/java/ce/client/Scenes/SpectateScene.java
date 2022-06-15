@@ -10,14 +10,15 @@ import javafx.scene.input.KeyEvent;
 
 import java.util.LinkedList;
 
-public class SpectateScene extends GameScene{
+public class SpectateScene extends GameScene {
     public SpectateScene(Group group, Integer[][] blockMatrix, Integer[] barList) {
         super(group, blockMatrix, barList);
         this.configureKeyBindings();
         this.drawPlayer();
     }
+
     @Override
-    protected void configureKeyBindings(){
+    protected void configureKeyBindings() {
         this.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -26,7 +27,8 @@ public class SpectateScene extends GameScene{
                         System.out.println("Agregar opcion de salir");
                         exit();
                     }
-                    default -> {}
+                    default -> {
+                    }
                 }
             }
         });

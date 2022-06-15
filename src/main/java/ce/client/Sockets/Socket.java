@@ -6,7 +6,7 @@ import java.net.*;
 /**
  * Socket class
  * Encapsulate a UDP socket
- *
+ * <p>
  * Use send fucntion and recieve to interactuate
  * Use port=0 to auto assign a random free port
  */
@@ -67,7 +67,9 @@ public class Socket {
 
     }
 
-    /** Recieve the data from the C Server and delete the "\0" character
+    /**
+     * Recieve the data from the C Server and delete the "\0" character
+     *
      * @return A String with the adecuate data from server
      * @throws IOException
      */

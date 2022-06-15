@@ -42,7 +42,7 @@ public class MainWindow {
             }
             """;
 
-    public static void launch(Stage window){
+    public static void launch(Stage window) {
 
         window.setTitle("Breakout");
         Group root = new Group();
@@ -58,8 +58,7 @@ public class MainWindow {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-        };
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
         Integer[] testBarList = new Integer[]{1, 2, 3};
 
         Button playButton = new Button("Play");
@@ -70,7 +69,7 @@ public class MainWindow {
 
         window.show();
 
-        playButton.setLayoutX(225-playButton.getWidth()/2);
+        playButton.setLayoutX(225 - playButton.getWidth() / 2);
         playButton.setLayoutY(180);
         playButton.setStyle(buttonStyle);
         playButton.setOnAction(event -> {
@@ -79,7 +78,7 @@ public class MainWindow {
             new Thread(MainWindow::initPlayerSocket).start();
         });
 
-        spectateButton.setLayoutX(225-spectateButton.getWidth()/2);
+        spectateButton.setLayoutX(225 - spectateButton.getWidth() / 2);
         spectateButton.setLayoutY(220);
         spectateButton.setStyle(buttonStyle);
         spectateButton.setOnAction(event -> {
@@ -88,16 +87,16 @@ public class MainWindow {
             new Thread(MainWindow::initViewerSocket).start();
         });
 
-        try{
+        try {
             FileInputStream inputStream = new FileInputStream("src/img/Title.png");
             Image title = new Image(inputStream);
             ImageView titleHolder = new ImageView(title);
             root.getChildren().add(titleHolder);
             titleHolder.setX(25);
             titleHolder.setY(50);
-        }catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("No encontro el titulo.");
-        }catch (SecurityException e){
+        } catch (SecurityException e) {
             System.out.println("Error de seguridad");
         }
     }
@@ -107,13 +106,13 @@ public class MainWindow {
      */
     public static void updateScene() {
 
-        for (Integer i = 0; i < data.blocks.length ; i++) {
-            for (Integer j = 0; j < data.blocks[i].length ; j++) {
+        for (Integer i = 0; i < data.blocks.length; i++) {
+            for (Integer j = 0; j < data.blocks[i].length; j++) {
                 showingScene.getBlocks().get(i).get(j).update(data.blocks[i][j]);
             }
         }
         showingScene.getPlayer().update(data);
-        for (Integer i = 0; i < data.getBallsLength() ; i++) {
+        for (Integer i = 0; i < data.getBallsLength(); i++) {
             showingScene.getBalls().get(i).update(data.getBalls()[i]);
         }
     }
@@ -145,9 +144,10 @@ public class MainWindow {
         }
 
     }
+
     public static void initViewerSocket() {
         try {
-            socket = SocketFactory.viewerSocket(1);
+            socket = SocketFactory.viewerSocket(0);
         } catch (SocketException | UnknownHostException e) {
             throw new RuntimeException(e);
         }

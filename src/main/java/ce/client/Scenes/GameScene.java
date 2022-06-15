@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 
 import java.util.LinkedList;
 
-public abstract class GameScene extends Scene{
+public abstract class GameScene extends Scene {
     protected final LinkedList<LinkedList<Block>> blocks = new LinkedList<>();
     protected final LinkedList<Bar> bars = new LinkedList<>();
     protected final LinkedList<Ball> balls = new LinkedList<>();
@@ -18,53 +18,57 @@ public abstract class GameScene extends Scene{
     protected PlayerBar player;
     protected boolean exitFlag = false;
 
-    public GameScene(Group group,Integer[][] blockMatrix,Integer[] barList){
-        super(group,800,750,Color.web("#112B3C"));
+    public GameScene(Group group, Integer[][] blockMatrix, Integer[] barList) {
+        super(group, 800, 750, Color.web("#112B3C"));
         this.group = group;
         this.drawBlocks(blockMatrix);
-        for (int i = 0; i < 3; i++) {
+        for (Integer i = 0; i < 3; i++) {
             this.addBall();
         }
 
     }
-    protected void drawBars(Integer[] barList){
-        for (int i = 0; i < barList.length; i++) {
-            Bar bar = new Bar(i,0,705);
+
+    protected void drawBars(Integer[] barList) {
+        for (Integer i = 0; i < barList.length; i++) {
+            Bar bar = new Bar(i, 0, 705);
             this.group.getChildren().add(bar.getRectangle());
             this.bars.add(bar);
         }
     }
 
-    protected void drawBlocks(Integer[][] blockMatrix){
-        for (int j = 0; j < blockMatrix.length; j++) {
+    protected void drawBlocks(Integer[][] blockMatrix) {
+        for (Integer j = 0; j < blockMatrix.length; j++) {
             LinkedList<Block> blockRow = new LinkedList<>();
-            for (int i = 0; i < blockMatrix[0].length; i++) {
-                Block block = new Block(new Integer[]{i, j},70*i+16,45*j+16);
+            for (Integer i = 0; i < blockMatrix[0].length; i++) {
+                Block block = new Block(new Integer[]{i, j}, 70 * i + 16, 45 * j + 16);
                 this.group.getChildren().add(block.getRectangle());
                 blockRow.add(block);
             }
             this.blocks.add(blockRow);
         }
     }
-    protected Ball drawSingularBall(){
-        return new Ball(this.balls.size(),400,745);
+
+    protected Ball drawSingularBall() {
+        return new Ball(this.balls.size(), 400, 745);
     }
-    protected void drawBalls(){
-        if(this.balls.isEmpty()){
+
+    protected void drawBalls() {
+        if (this.balls.isEmpty()) {
             this.addBall();
-        }else{
-            for (Ball ball: this.balls) {
+        } else {
+            for (Ball ball : this.balls) {
                 this.group.getChildren().add(ball.getCircle());
             }
         }
     }
-    public void addBall(){
+
+    public void addBall() {
         Ball newBall = drawSingularBall();
         this.balls.add(newBall);
         this.group.getChildren().add(newBall.getCircle());
     }
 
-    public int getBallQuantity(){
+    public Integer getBallQuantity() {
         return this.balls.size();
     }
 
@@ -82,19 +86,21 @@ public abstract class GameScene extends Scene{
 
     protected abstract void configureKeyBindings();
 
-    protected void drawPlayer(){
-        this.player = new PlayerBar(-1,(800/2)-50,705);
+    protected void drawPlayer() {
+        this.player = new PlayerBar(-1, (800 / 2) - 50, 705);
         this.group.getChildren().add(this.player.getRectangle());
         this.bars.add(this.player);
     }
-    public PlayerBar getPlayer(){
+
+    public PlayerBar getPlayer() {
         return this.player;
     }
 
     public boolean getExitFlag() {
         return this.exitFlag;
     }
-    protected void exit(){
+
+    protected void exit() {
         this.exitFlag = true;
     }
 }

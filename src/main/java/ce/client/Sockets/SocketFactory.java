@@ -11,6 +11,7 @@ public abstract class SocketFactory {
     /**
      * Create a Client Socket
      * Send a msg to server to add this port as a client
+     *
      * @param port a int indicating the port, expecto to use 0 to auto assign
      * @return The Socker created
      * @throws SocketException
@@ -23,9 +24,11 @@ public abstract class SocketFactory {
         return clientsocket;
 
     }
+
     /**
      * Create a viewer Socket
      * Send a msg to server to add this port as a viewer
+     *
      * @param port an integer indicating the port, expect to be 0 to auto assign
      * @return The Socket created
      * @throws SocketException

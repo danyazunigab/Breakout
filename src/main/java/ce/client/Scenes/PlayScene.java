@@ -10,14 +10,14 @@ import javafx.scene.input.KeyEvent;
 
 import java.util.LinkedList;
 
-public class PlayScene extends GameScene{
+public class PlayScene extends GameScene {
     public PlayScene(Group group, Integer[][] blockMatrix, Integer[] barList) {
         super(group, blockMatrix, barList);
         this.drawPlayer();
         this.configureKeyBindings();
     }
 
-    protected void configureKeyBindings(){
+    protected void configureKeyBindings() {
         this.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -28,7 +28,8 @@ public class PlayScene extends GameScene{
                         System.out.println("Agregar salir");
                         exit();
                     }
-                    default -> {}
+                    default -> {
+                    }
                 }
             }
         });
@@ -37,7 +38,8 @@ public class PlayScene extends GameScene{
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case LEFT, A, RIGHT, D -> player.stop();
-                    default -> {}
+                    default -> {
+                    }
                 }
             }
         });

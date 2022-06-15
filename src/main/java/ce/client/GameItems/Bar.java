@@ -4,11 +4,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Bar {
-    private final int id;
+    private final Integer id;
     private final Rectangle rectangle;
-    private int posX;
-    private final int posY;
-    public Bar(int id,int posX, int posY){
+    private Integer posX;
+    private final Integer posY;
+    public Bar(Integer id,Integer posX, Integer posY){
         this.id = id;
         this.posX = posX;
         this.posY = posY;
@@ -20,17 +20,17 @@ public class Bar {
     public Rectangle getRectangle() {
         return this.rectangle;
     }
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-    public int getPosX() {
+    public Integer getPosX() {
         return posX;
     }
     public void setPosX(int posX) {
         this.rectangle.setX(posX);
         this.posX = posX;
     }
-    public int getPosY() {
+    public Integer getPosY() {
         return posY;
     }
     public void extend(){

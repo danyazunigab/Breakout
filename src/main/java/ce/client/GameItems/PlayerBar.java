@@ -1,7 +1,6 @@
 package ce.client.GameItems;
 
 public class PlayerBar extends Bar {
-    private final int speed = 15;
 
     private String direction="";
 

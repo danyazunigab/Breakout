@@ -6,8 +6,8 @@ import javafx.scene.shape.Rectangle;
 public class Block {
     private final Integer[] id;
     private final Rectangle rectangle;
-    private int posX;
-    private int posY;
+    private Integer posX;
+    private Integer posY;
 
     private Integer value = 0;
 
@@ -45,7 +45,7 @@ public class Block {
         this.posX = newPosX;
     }
 
-    public int getPosX() {
+    public Integer getPosX() {
         return this.posX;
     }
 
@@ -53,7 +53,7 @@ public class Block {
         this.posY = newPosY;
     }
 
-    public int getPosY() {
+    public Integer getPosY() {
         return this.posY;
     }
 
