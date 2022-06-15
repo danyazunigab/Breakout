@@ -7,6 +7,10 @@ import ce.client.GameItems.PlayerBar;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeType;
+import javafx.stage.Stage;
 
 import java.util.LinkedList;
 

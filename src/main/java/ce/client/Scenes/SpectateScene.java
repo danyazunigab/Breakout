@@ -7,6 +7,7 @@ import ce.client.GameItems.PlayerBar;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 import java.util.LinkedList;
 

@@ -38,12 +38,12 @@ public class MainWindow {
                 -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
                 -fx-font-weight: bold;
                 -fx-font-size: 1.1em;
-            }
-            """;
+            }""";
 
     public static void launch(Stage window) {
 
         window.setTitle("Breakout");
+        window.getIcons().add(new Image("file:scr/img/icon.png"));
         Group root = new Group();
         Scene scene = new Scene(root, 450, 300, Color.web("#112B3C"));
         window.setScene(scene);
