@@ -6,6 +6,10 @@ import ce.client.GameItems.Blocks.Block;
 import ce.client.GameItems.GameItem;
 import ce.client.GameItems.PlayerBar;
 
+/**
+ * Creates Game Items' instances
+ * Ball,Bar,PlayerBar and Blocks
+ */
 public class GameItemFactory{
     public GameItem create(String type) {
         switch (type){

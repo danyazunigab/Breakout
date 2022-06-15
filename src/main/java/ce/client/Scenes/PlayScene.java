@@ -14,12 +14,18 @@ import javafx.stage.Stage;
 
 import java.util.LinkedList;
 
+/**
+ * Scene for the player side of the client
+ */
 public class PlayScene extends GameScene {
     public PlayScene(Group group, Integer[][] blockMatrix, Integer[] barList) {
         super(group, blockMatrix, barList);
         this.configureKeyBindings();
     }
 
+    /**
+     * Allows the player to manipulate the bar
+     */
     protected void configureKeyBindings() {
         this.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override

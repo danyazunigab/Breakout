@@ -36,7 +36,7 @@ struct gamedata{
 
     struct head *balls;
 
-    int lives;
+    int lifes;
     double points;
 
     char *msg;

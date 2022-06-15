@@ -21,12 +21,21 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 
 public class MainWindow {
-
+    /**
+     * Current scene showing in window
+     */
     private static GameScene showingScene;
-
-    private static final GameData data = new GameData();
-
+    /**
+     * Provides the information given by the server
+     */
+    private static final GameData data = GameData.getInstance();
+    /**
+     * Communication socket
+     */
     private static Socket socket;
+    /**
+     * Button style in CSS
+     */
     private static final String buttonStyle = """
                 {
                 -fx-padding: 8 15 15 15;
@@ -38,8 +47,12 @@ public class MainWindow {
                 -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
                 -fx-font-weight: bold;
                 -fx-font-size: 1.1em;
-            }""";
+            }"""; //Da error en el IDE pero es valido
 
+    /**
+     * Launches the window and the main menu
+     * @param window
+     */
     public static void launch(Stage window) {
 
         window.setTitle("Breakout");
@@ -49,7 +62,7 @@ public class MainWindow {
         window.setScene(scene);
 
         Group game = new Group();
-        Integer[][] testBlockMatrix = new Integer[][]{
+        Integer[][] initialBlockMatrix = new Integer[][]{
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -58,7 +71,7 @@ public class MainWindow {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
-        Integer[] testBarList = new Integer[]{1, 2, 3};
+        Integer[] initialBarList = new Integer[]{1, 2, 3};
 
         Button playButton = new Button("Play");
         root.getChildren().add(playButton);
@@ -72,18 +85,18 @@ public class MainWindow {
         playButton.setLayoutY(180);
         playButton.setStyle(buttonStyle);
         playButton.setOnAction(event -> {
-            showingScene = new PlayScene(game, testBlockMatrix, testBarList);
+            showingScene = new PlayScene(game, initialBlockMatrix, initialBarList);
             window.setScene(showingScene);
-            new Thread(MainWindow::initPlayerSocket).start();
+            new Thread(MainWindow::initPlayerSocket).start(); //Thread to mantain socket open
         });
 
         spectateButton.setLayoutX(225 - spectateButton.getWidth() / 2);
         spectateButton.setLayoutY(220);
         spectateButton.setStyle(buttonStyle);
         spectateButton.setOnAction(event -> {
-            showingScene = new SpectateScene(game, testBlockMatrix, testBarList);
+            showingScene = new SpectateScene(game, initialBlockMatrix, initialBarList);
             window.setScene(showingScene);
-            new Thread(MainWindow::initViewerSocket).start();
+            new Thread(MainWindow::initViewerSocket).start(); //Thread to mantain socket open and listening
         });
 
         try {
@@ -104,7 +117,6 @@ public class MainWindow {
      * Update the Scene elements with the {@code Gamedata} information
      */
     public static void updateScene() {
-
         for (Integer i = 0; i < data.blocks.length; i++) {
             for (Integer j = 0; j < data.blocks[i].length; j++) {
                 showingScene.getBlocks().get(i).get(j).update(data.blocks[i][j]);
@@ -114,6 +126,7 @@ public class MainWindow {
         for (Integer i = 0; i < data.getBallsLength(); i++) {
             showingScene.getBalls().get(i).update(data.getBalls()[i]);
         }
+        showingScene.updateGameStatus(data.getLives(), data.getPoints());
     }
 
     /**
@@ -144,6 +157,9 @@ public class MainWindow {
 
     }
 
+    /**
+     * Init client as a viewer socket and update the scene accordingly
+     */
     public static void initViewerSocket() {
         try {
             socket = SocketFactory.viewerSocket(0);
@@ -162,7 +178,5 @@ public class MainWindow {
                 throw new RuntimeException(e);
             }
         }
-
     }
-
 }

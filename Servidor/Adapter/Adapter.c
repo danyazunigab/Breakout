@@ -29,7 +29,7 @@ char *struct_to_Json(struct gamedata *data) {
     }
 
     check = cJSON_AddItemToObject(json, "msg", cJSON_CreateStringReference(data->msg));
-    cJSON_AddNumberToObject(json, "lives",data->lives );
+    cJSON_AddNumberToObject(json, "lifes",data->lifes );
     cJSON_AddNumberToObject(json, "points",data->points );
 
     blocks = cJSON_AddArrayToObject(json, "blocks");

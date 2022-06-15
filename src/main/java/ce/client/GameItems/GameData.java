@@ -5,12 +5,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-//Pseudo Singleton possible, not expected, but needed ?:D
-
 /**
  * class that is used to read the Json received from Server
  */
 public final class GameData {
+    /**
+     * Unique GameData instance
+     */
+    private static GameData instance;
+
+    /**
+     * Returns the instance and, if there's none, creates one
+     * @return GameData instance
+     */
+    public static GameData getInstance(){
+        if(instance == null){
+            instance = new GameData();
+        }
+        return instance;
+    }
     /**
      * a Jackson {@link com.fasterxml.jackson.databind.ObjectMapper} Mapper
      */
@@ -33,6 +46,8 @@ public final class GameData {
      * Not intented to see in the client
      */
     public String msg;
+    public Integer lives = 1;
+    public Integer points = 0;
 
     /**
      * Update the GameData from the information in the String {@code json}
@@ -46,6 +61,8 @@ public final class GameData {
         this.paddle = data.paddle;
         this.balls = data.balls;
         this.msg = data.msg;
+        this.lives = data.lives;
+        this.points = data.points;
     }
 
     /**
@@ -85,16 +102,11 @@ public final class GameData {
         ball[] balls;
         @JsonProperty("msg")
         String msg;
-        @JsonProperty("life")
+        @JsonProperty("lifes")
         Integer lives;
         @JsonProperty("points")
         Integer points;
     }
-
-    public Integer[][] getBlocks() {
-        return blocks;
-    }
-
     public void setBlocks(Integer[][] blocks) {
         this.blocks = blocks;
     }
@@ -139,6 +151,21 @@ public final class GameData {
      */
     public Integer getBallsLength() {
         return balls.length;
+    }
+    public Integer getLives() {
+        return lives;
+    }
+
+    public void setLives(Integer lives) {
+        this.lives = lives;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
     }
 
     public static void main(String[] args) {

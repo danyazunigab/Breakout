@@ -1,0 +1,3 @@
+Z:/Uni/2022 I Semestre/Lenguajes/Tareas/Tarea 3/Breakout/Servidor/cmake-build-debug/CMakeFiles/Server.dir
+Z:/Uni/2022 I Semestre/Lenguajes/Tareas/Tarea 3/Breakout/Servidor/cmake-build-debug/CMakeFiles/edit_cache.dir
+Z:/Uni/2022 I Semestre/Lenguajes/Tareas/Tarea 3/Breakout/Servidor/cmake-build-debug/CMakeFiles/rebuild_cache.dir

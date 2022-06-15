@@ -105,10 +105,11 @@ void collision(struct ball *ball, struct bricks *brick, struct gamedata *data) {
         case 0:
             data->msg = "Points++";
             printf("block break %i", brick->state);
+            printf("points");
             break;
 
         case 1:
-            data->lives++;
+            data->lifes++;
             data->msg = "1 life";
             printf("block break %i", brick->state);
 
@@ -174,8 +175,8 @@ void check_limits(struct ball *ball, struct node *node, struct gamedata *data) {
         printf("ball impact down");
 
         if (data->balls->quantity <= 1) {
-            if (data->lives > 0) {
-                data->lives--;
+            if (data->lifes > 0) {
+                data->lifes--;
                 reset_ball(ball);
             } else {
                 data->msg = "Game Over";

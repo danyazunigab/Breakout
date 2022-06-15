@@ -1,0 +1,22 @@
+# ninja log v5
+45	1043	6769820215802402	CMakeFiles/Server.dir/Double_linked_list/DLL.c.obj	e552022449ed5a92
+28	1052	6769820215802402	CMakeFiles/Server.dir/Gamedata/Game_data.c.obj	1fb3448ddf37f2c8
+37	1071	6769820215952366	CMakeFiles/Server.dir/Adapter/Adapter.c.obj	adf9e56d82b91f24
+1053	1263	6769820218172332	CMakeFiles/Server.dir/Consts.c.obj	940f8f76096d705d
+41	1286	6769820218382380	CMakeFiles/Server.dir/libs/cJSON.c.obj	6460fa3b4709454a
+1	4476	6769820250292604	CMakeFiles/Server.dir/main.c.obj	45bbff24c4e3868b
+33	4511	6769820250642603	CMakeFiles/Server.dir/Socket/Socket.c.obj	f05e0840a532479f
+1045	4531	6769820250842541	CMakeFiles/Server.dir/Engine/Engine.c.obj	58c97f034f5de311
+4532	5116	6769820256622644	Server.exe	5d026096849d27c1
+21	2496	6770178804540053	CMakeFiles/Server.dir/Engine/Engine.c.obj	58c97f034f5de311
+2497	3409	6770178813560100	Server.exe	5d026096849d27c1
+36	346	6770215078259102	CMakeFiles/Server.dir/Gamedata/Game_data.c.obj	1fb3448ddf37f2c8
+41	376	6770215078539049	CMakeFiles/Server.dir/Adapter/Adapter.c.obj	adf9e56d82b91f24
+5	1498	6770215089798964	CMakeFiles/Server.dir/main.c.obj	45bbff24c4e3868b
+4	1216	6770215193938967	CMakeFiles/Server.dir/Engine/Engine.c.obj	58c97f034f5de311
+1233	1509	6770215196828954	Server.exe	5d026096849d27c1
+6	1241	6770238816494890	CMakeFiles/Server.dir/Engine/Engine.c.obj	58c97f034f5de311
+1242	1505	6770238819084939	Server.exe	5d026096849d27c1
+4	159	6770240776791870	CMakeFiles/Server.dir/Gamedata/Game_data.c.obj	1fb3448ddf37f2c8
+20	1632	6770240791521831	CMakeFiles/Server.dir/Engine/Engine.c.obj	58c97f034f5de311
+1632	1865	6770240793771849	Server.exe	5d026096849d27c1

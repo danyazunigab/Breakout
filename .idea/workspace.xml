@@ -17,7 +17,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="320827a5-bd80-4499-b113-999eab6f9a2e" name="Changes" comment="Refactor gamedata and Adapter to use linkedlist in balls" />
+    <list default="true" id="320827a5-bd80-4499-b113-999eab6f9a2e" name="Changes" comment="Refactor gamedata and Adapter to use linkedlist in balls">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/Title.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ce/client/Scenes/PlayScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ce/client/Scenes/SpectateScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ce/client/GameItems/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ce/client/GameItems/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ce/client/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ce/client/Scenes/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ce/client/Windows/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ce/client/Windows/MainWindow.java" afterDir="false" />
+    </list>
     <list id="e7e71865-4187-46fb-a5b5-9265ffad0c51" name="ignore" comment="ignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +42,17 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="client" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -45,6 +64,7 @@
       <list>
         <option value="Class" />
         <option value="CMakeLists.txt" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -60,7 +80,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -75,28 +95,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/2001i/IdeaProjects/client/Servidor/Adapter/Adapter.c&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.intentionPowerPack&quot;,
-    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/2001i/IdeaProjects/client/Servidor/Adapter/Adapter.c",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "Errors",
+    "structure.view.defaults.are.configured": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\2001i\IdeaProjects\client\Servidor\libs" />
@@ -105,8 +125,13 @@
       <recent name="C:\Users\2001i\IdeaProjects\client\Servidor\Gamedata" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApp">
-    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.ce.client.MainApp">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ce.client.MainApp" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ce.client.MainApp" />
       <module name="client.main" />
       <extension name="coverage">
@@ -124,8 +149,30 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Breakout [javadoc]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="javadoc" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Application.MainApp" />
+      <item itemvalue="Application.ce.client.MainApp" />
+      <item itemvalue="Gradle.Breakout [javadoc]" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -136,7 +183,7 @@
       <created>1654655448350</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1654655448350</updated>
+      <updated>1655129411085</updated>
       <workItem from="1654655455145" duration="8625000" />
       <workItem from="1654716461288" duration="2436000" />
       <workItem from="1654749537936" duration="1488000" />
@@ -153,6 +200,10 @@
       <workItem from="1655219620602" duration="4774000" />
       <workItem from="1655234768746" duration="1715000" />
       <workItem from="1655259911096" duration="3994000" />
+      <workItem from="1655129414302" duration="3983000" />
+      <workItem from="1655235886754" duration="633000" />
+      <workItem from="1655237513817" duration="649000" />
+      <workItem from="1655239454035" duration="15157000" />
     </task>
     <task id="LOCAL-00001" summary="Adapter from server conditions to json&#10;Use CJSON to transfor to JSON">
       <created>1654728209359</created>
@@ -264,13 +315,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="Add Game Over and WIN and go to next level" />
   </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="CMakeRunConfiguration">
-        <watch expression="*data-&gt;blocks @ 8" />
-        <watch expression="*(*data-&gt;blocks @ 8[0]) @ 11" />
-        <watch expression="*data-&gt;blocks @ 8[6]" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalStateException" package="java.lang" />
+          <option name="timeStamp" value="10" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

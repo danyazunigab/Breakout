@@ -19,7 +19,7 @@ struct gamedata Init_gamedata(void) {
 
     struct gamedata data = {
             create_blocks(),//Keep in mind that this assign memory space, to avoid memory leak reuse the struct with reset_block
-            paddle, balls, 1, 0, ""
+            paddle, balls, 0, 0, ""
     };
     return data;
 }

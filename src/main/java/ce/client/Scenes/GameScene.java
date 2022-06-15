@@ -5,12 +5,9 @@ import ce.client.GameItems.Bar;
 import ce.client.GameItems.Blocks.Block;
 import ce.client.GameItems.Factory.GameItemFactory;
 import ce.client.GameItems.PlayerBar;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.geometry.Pos;
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -18,23 +15,72 @@ import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
 
 import java.util.LinkedList;
 
+/**
+ * General game scene
+ */
 public abstract class GameScene extends Scene {
-    private Integer hp;
-    private Integer pts;
-    private final Label ptsLabel;
-    private final Label hpLabel;
+    /**
+     * Player points
+     */
+    private Integer pts = 0;
+    /**
+     * Showing points
+     */
+    private String ptsStr = "0";
+    /**
+     * Points label
+     */
+    private final Label ptsLabel = new Label(this.ptsStr);
+    /**
+     * Player health points (lives)
+     */
+    private Integer hp = 0;
+    /**
+     * Showing HP
+     */
+    private String hpStr = "0";
+    /**
+     * Health label
+     */
+    private final Label hpLabel = new Label(this.hpStr);
+    /**
+     * Block matrix
+     */
     protected final LinkedList<LinkedList<Block>> blocks = new LinkedList<>();
+    /**
+     * Bar list
+     */
     protected final LinkedList<Bar> bars = new LinkedList<>();
+    /**
+     * Ball list
+     */
     protected final LinkedList<Ball> balls = new LinkedList<>();
+    /**
+     * Game group
+     */
     protected final Group group;
+    /**
+     * Player bar
+     */
     protected PlayerBar player;
+    /**
+     * Flag to exit game
+     */
     protected boolean exitFlag = false;
+    /**
+     * Game Item factory
+     */
     protected GameItemFactory factory = new GameItemFactory();
 
+    /**
+     * Game Scene constructor
+     * @param group group
+     * @param blockMatrix block matrix
+     * @param barList bar list
+     */
     public GameScene(Group group, Integer[][] blockMatrix, Integer[] barList) {
         super(group, 1000, 750, Color.web("#112B3C"));
         this.group = group;
@@ -49,28 +95,26 @@ public abstract class GameScene extends Scene {
         this.group.getChildren().add(statBg);
 
         Label hpTitleLabel = new Label("HP:");
+        this.group.getChildren().add(hpTitleLabel);
         hpTitleLabel.setTextFill(Color.web("#EFEFEF"));
         hpTitleLabel.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
-        this.group.getChildren().add(hpTitleLabel);
         hpTitleLabel.setLayoutX(880);
         hpTitleLabel.setLayoutY(250);
-        this.hpLabel = new Label();
+        this.group.getChildren().add(this.hpLabel);
         this.hpLabel.setTextFill(Color.web("#EFEFEF"));
         this.hpLabel.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
-        this.group.getChildren().add(this.hpLabel);
         this.hpLabel.setLayoutX(900);
         this.hpLabel.setLayoutY(275);
 
         Label ptsTitleLabel = new Label("Points:");
+        this.group.getChildren().add(ptsTitleLabel);
         ptsTitleLabel.setTextFill(Color.web("#EFEFEF"));
         ptsTitleLabel.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
-        this.group.getChildren().add(ptsTitleLabel);
         ptsTitleLabel.setLayoutX(862);
         ptsTitleLabel.setLayoutY(400);
-        this.ptsLabel = new Label();
-        this.ptsLabel.setTextFill(Color.web("#EFEFEF"));
-        this.ptsLabel.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
         this.group.getChildren().add(this.ptsLabel);
+        this.ptsLabel.setTextFill(Color.web("#EFEFEF"));
+        this.ptsLabel.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 18));
         this.ptsLabel.setLayoutX(900);
         this.ptsLabel.setLayoutY(425);
 
@@ -80,6 +124,11 @@ public abstract class GameScene extends Scene {
             this.addBall();
         }
     }
+
+    /**
+     * Draws the bar list on screen
+     * @param barList bar list
+     */
     protected void drawBars(Integer[] barList){
         for (int i = 0; i < barList.length; i++) {
             Bar bar = (Bar) factory.create("bar");
@@ -88,6 +137,10 @@ public abstract class GameScene extends Scene {
         }
     }
 
+    /**
+     * Draws the block matrix on screen
+     * @param blockMatrix block matrix
+     */
     protected void drawBlocks(Integer[][] blockMatrix) {
         for (Integer j = 0; j < blockMatrix.length; j++) {
             LinkedList<Block> blockRow = new LinkedList<>();
@@ -102,14 +155,22 @@ public abstract class GameScene extends Scene {
             this.blocks.add(blockRow);
         }
     }
-//this.balls.size(),400,745
+
+    /**
+     * Draws a ball
+     * @return ball
+     */
     protected Ball drawSingularBall() {
         Ball ball = (Ball) factory.create("ball");
         ball.setID(this.balls.size());
         ball.setPosX(400);
-        ball.setPosY(745);
+        ball.setPosY(900);
         return ball;
     }
+
+    /**
+     * Draws the ball list on screen
+     */
     protected void drawBalls(){
         if(this.balls.isEmpty()){
             this.addBall();
@@ -120,32 +181,56 @@ public abstract class GameScene extends Scene {
         }
     }
 
+    /**
+     * Adds one ball to the screen
+     */
     public void addBall() {
         Ball newBall = drawSingularBall();
         this.balls.add(newBall);
         this.group.getChildren().add(newBall.getShape());
     }
 
+    /**
+     * Returns ball quantity
+     * @return ball quantity
+     */
     public Integer getBallQuantity() {
         return this.balls.size();
     }
 
+    /**
+     * Returns block matrix
+     * @return block matrix
+     */
     public LinkedList<LinkedList<Block>> getBlocks() {
         return blocks;
     }
 
+    /**
+     * Returns bar list
+     * @return bars
+     */
     public LinkedList<Bar> getBars() {
         return bars;
     }
 
+    /**
+     * Returns ball list
+     * @return balls
+     */
     public LinkedList<Ball> getBalls() {
         return balls;
     }
 
+    /**
+     * Player's actions supported (depends on type of client)
+     */
     protected abstract void configureKeyBindings();
 
+    /**
+     * Draws the player bar on screen
+     */
     protected void drawPlayer(){
-        //this.player = new PlayerBar(-1,(800/2)-50,705);
         this.player = (PlayerBar) factory.create("player");
         this.player.setID(-1);
         this.player.setPosX((800/2)-50);
@@ -153,50 +238,88 @@ public abstract class GameScene extends Scene {
         this.bars.add(this.player);
     }
 
+    /**
+     * Returns the player bar
+     * @return player bar
+     */
     public PlayerBar getPlayer() {
         return this.player;
     }
 
+    /**
+     * Gets exit flag
+     * @return exit flag
+     */
     public boolean getExitFlag() {
         return this.exitFlag;
     }
 
+    /**
+     * Exits
+     */
     protected void exit() {
         this.exitFlag = true;
     }
 
+    /**
+     * Returns current HP
+     * @return HP
+     */
     public Integer getHp() {
         return hp;
     }
 
+    /**
+     * Sets new HP
+     * @param hp players' health points
+     */
     public void setHp(Integer hp) {
         this.hp = hp;
-        this.updateGameStatus();
+        this.hpStr = this.hp.toString();
+        this.updateLabels();
     }
 
+    /**
+     * returns current points
+     * @return points
+     */
     public Integer getPts() {
         return pts;
     }
 
+    /**
+     * Sets new points value
+     * @param pts points
+     */
     public void setPts(Integer pts) {
         this.pts = pts;
-        this.updateGameStatus();
+        this.ptsStr = this.pts.toString();
+        this.updateLabels();
     }
 
-    private void updateGameStatus(){
-        this.hpLabel.setText(this.hp.toString());
-        this.hpLabel.widthProperty().addListener(new ChangeListener<Number>() {
+    /**
+     * Updates the labels for HP and points
+     */
+    private void updateLabels(){
+        Platform.runLater(new Runnable() {
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                hpLabel.setLayoutX(900 - hpLabel.getWidth()/2);
+            public void run() {
+                ptsLabel.setText(ptsStr);
+                ptsLabel.setLayoutX(900-ptsLabel.getWidth()/2);
+                hpLabel.setText(hpStr);
+                hpLabel.setLayoutX(900-hpLabel.getWidth()/2);
             }
         });
-        this.ptsLabel.setText(this.pts.toString());
-        this.ptsLabel.widthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                ptsLabel.setLayoutX(900 - ptsLabel.getWidth()/2);
-            }
-        });
+
+    }
+
+    /**
+     * Updates the game status variables (HP and points)
+     * @param lives player HP
+     * @param points player points
+     */
+    public void updateGameStatus(Integer lives, Integer points){
+        this.setHp(lives);
+        this.setPts(points);
     }
 }
