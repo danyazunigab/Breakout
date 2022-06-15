@@ -17,14 +17,17 @@ void move_paddle(struct serversocket *socket, struct gamedata *data) {
     if (socket->buffer == NULL) {
         return;
     }
+
     if ((strncmp((const char *) socket->buffer, "L", 1) == 0) && data->paddle.left > 10) {
-        data->paddle.rigth = data->paddle.rigth - 5;
-        data->paddle.left = data->paddle.left - 5;
+        data->paddle.rigth -= PADVEL;
+        data->paddle.left -= PADVEL;
     }
+
     if ((strncmp((const char *) socket->buffer, "R", 1) == 0) && data->paddle.rigth < 815) {
-        data->paddle.rigth = data->paddle.rigth + 5;
-        data->paddle.left = data->paddle.left + 5;
+        data->paddle.rigth += PADVEL;
+        data->paddle.left += PADVEL;
     }
+
 };
 
 void Interpretate(struct gamedata *data) {
@@ -104,7 +107,6 @@ void collision(struct ball *ball, struct bricks *brick, struct gamedata *data) {
             return;
         case 0:
             data->msg = "Points++";
-            data->points += brick->value;
             printf("block break %i", brick->state);
             break;
 
@@ -123,14 +125,14 @@ void collision(struct ball *ball, struct bricks *brick, struct gamedata *data) {
             }
             break;
         case 3:
-            data->msg = "paddle increase";
+            data->msg = "paddle incr";
             data->paddle.left -= (data->paddle.rigth - data->paddle.left) / 4;
             data->paddle.rigth += (data->paddle.rigth - data->paddle.left) / 4;
             printf("block break %i", brick->state);
 
             break;
         case 4:
-            data->msg = "paddle decrease";
+            data->msg = "paddle decr";
             data->paddle.left += (data->paddle.rigth - data->paddle.left) / 4;
             data->paddle.rigth -= (data->paddle.rigth - data->paddle.left) / 4;
             printf("block break %i", brick->state);
@@ -157,6 +159,7 @@ void collision(struct ball *ball, struct bricks *brick, struct gamedata *data) {
 
             break;
     }
+    data->points += brick->value;
     ball->vy *= -1;
     brick->state = -1;
 
@@ -164,23 +167,24 @@ void collision(struct ball *ball, struct bricks *brick, struct gamedata *data) {
 };
 
 void check_limits(struct ball *ball, struct node *node, struct gamedata *data) {
-    if (ball->y < 15) {
+    if (ball->y < TOPLIMIT) {
         ball->vy *= -1;
         ball->y += 15;
         printf("ball impact top");
     }
 
-    if (ball->y > 750) {
+    if (ball->y > DOWNLIMIT) {
         printf("ball impact down");
 
-        if (data->balls->quantity > 1) {
-            data->lives--;
+        if (data->balls->quantity <= 1) {
             if (data->lives > 0) {
                 data->lives--;
                 reset_ball(ball);
             } else {
                 data->msg = "Game Over";
                 ball->factor = 0;
+                node->value = NULL;
+                free(ball);
             }
 
         } else {
@@ -189,18 +193,18 @@ void check_limits(struct ball *ball, struct node *node, struct gamedata *data) {
         }
         return;
     }
-    if (ball->x < 15) {
+    if (ball->x < LEFTLIMIT) {
         ball->vx *= -1;
         ball->x += 15;
     }
-    if (ball->x > 800 - 15) {
+    if (ball->x > RIGHTLIMIT) {
         ball->vx *= -1;
         ball->x -= 15;
     }
 };
 
 void paddle_collision(struct ball *ball, struct paddle *bar) {
-    if (ball->y > 690) {
+    if (ball->y > PADTOP-15) {
         if (ball->x < bar->rigth && ball->x > bar->left) {
             ball->vy *= -1;
             ball->y -= ball->factor * 3;

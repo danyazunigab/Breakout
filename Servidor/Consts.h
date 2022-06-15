@@ -8,7 +8,12 @@
 
 #define ROWS 8
 #define COL 11
-
+#define LEFTLIMIT 15
+#define RIGHTLIMIT 785
+#define TOPLIMIT 15
+#define DOWNLIMIT 750
+#define PADVEL 5
+#define PADTOP 705
 
 
 

@@ -64,7 +64,7 @@ void *delete_node(struct head *DLL, struct node *pointer) {
         DLL->start = pointer->next;
         pointer->next->previous = NULL;
     }
-    if (DLL->last == pointer && pointer->next != NULL) {
+    if (DLL->last == pointer && pointer->previous != NULL) {
         //ultimo elemento
         DLL->last = pointer->previous;
         pointer->previous->next = NULL;

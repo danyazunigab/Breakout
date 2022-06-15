@@ -21,7 +21,6 @@ struct bricks {
 struct paddle{
     int left;
     int rigth;
-    int top;
 };
 struct ball{
     int x;

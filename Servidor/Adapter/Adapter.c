@@ -29,6 +29,8 @@ char *struct_to_Json(struct gamedata *data) {
     }
 
     check = cJSON_AddItemToObject(json, "msg", cJSON_CreateStringReference(data->msg));
+    cJSON_AddNumberToObject(json, "lives",data->lives );
+    cJSON_AddNumberToObject(json, "points",data->points );
 
     blocks = cJSON_AddArrayToObject(json, "blocks");
     if (blocks == NULL) {
@@ -73,11 +75,15 @@ char *struct_to_Json(struct gamedata *data) {
         printf("error creating the balls");
         exit(-3);
     }
+
     //puntero temporal para iterar.
-    struct node *nodepointer=NULL;
+    struct node *nodepointer = NULL;
     ForEachDLL(nodepointer, data->balls) {
         //casteo a ball;
         struct ball *ball1 = nodepointer->value;
+        if (ball1==NULL){
+            continue;
+        }
         cJSON *ball = cJSON_CreateObject();
         if (cJSON_AddNumberToObject(ball, "x", ball1->x)
             == NULL) {
