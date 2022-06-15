@@ -11,7 +11,6 @@ public class PlayerBar extends Bar {
 
     public void moveLeft() {
         this.direction = "L";
-
     }
 
     public void moveRight() {
