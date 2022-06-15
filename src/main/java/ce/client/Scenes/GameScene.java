@@ -47,7 +47,7 @@ public abstract class GameScene extends Scene{
         }
     }
     protected Ball drawSingularBall(){
-        return new Ball(this.balls.size(),400,645);
+        return new Ball(this.balls.size(),400,745);
     }
     protected void drawBalls(){
         if(this.balls.isEmpty()){
