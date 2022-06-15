@@ -34,7 +34,6 @@ public class MainWindow {
                 -fx-background-radius: 8;
                 -fx-background-color:\s
                     linear-gradient(from 0% 93% to 0% 100%, #db5800 0%, #F66B0E 100%),
-                    #F66B0E,
                     #F66B0E;
                 -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
                 -fx-font-weight: bold;

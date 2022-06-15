@@ -14,7 +14,6 @@ public class SpectateScene extends GameScene {
     public SpectateScene(Group group, Integer[][] blockMatrix, Integer[] barList) {
         super(group, blockMatrix, barList);
         this.configureKeyBindings();
-        this.drawPlayer();
     }
 
     @Override

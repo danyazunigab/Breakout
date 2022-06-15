@@ -7,6 +7,7 @@ public class PlayerBar extends Bar {
     public PlayerBar(int id, int posX, int posY) {
         super(id, posX, posY);
     }
+    public PlayerBar(){super();}
 
     public void moveLeft() {
         this.direction = "L";

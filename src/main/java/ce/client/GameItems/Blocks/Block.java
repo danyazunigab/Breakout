@@ -1,17 +1,18 @@
 package ce.client.GameItems.Blocks;
 
+import ce.client.GameItems.GameItem;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Block {
-    private final Integer[] id;
+public class Block implements GameItem {
+    private Integer[] id;
     private final Rectangle rectangle;
     private Integer posX;
     private Integer posY;
 
     private Integer value = 0;
 
-    public Block(Integer[] id, int posX, int posY) {
+    public Block(Integer[] id, Integer posX, Integer posY) {
         this.id = id;
         this.posX = posX;
         this.posY = posY;
@@ -21,11 +22,14 @@ public class Block {
         this.changeRectangleFill(id[1]);
     }
 
+    public Block(){
+        this.rectangle = new Rectangle(68,43);
+    }
     public void setColor(Color newColor) {
         this.rectangle.setFill(newColor);
     }
 
-    public void changeRectangleFill(int level) { //Changes block color based on row
+    public void changeRectangleFill(Integer level) { //Changes block color based on row
         if (level == 0 || level == 1) {
             this.setColor(Color.web("#e50000")); //Red
         } else if (level == 2 || level == 3) {
@@ -37,20 +41,22 @@ public class Block {
         }
     }
 
-    public Rectangle getRectangle() {
+    public Rectangle getShape() {
         return this.rectangle;
     }
 
-    public void setPosX(int newPosX) {
+    public void setPosX(Integer newPosX) {
         this.posX = newPosX;
+        this.rectangle.setX(this.posX);
     }
 
     public Integer getPosX() {
         return this.posX;
     }
 
-    public void setPosY(int newPosY) {
+    public void setPosY(Integer newPosY) {
         this.posY = newPosY;
+        this.rectangle.setY(this.posY);
     }
 
     public Integer getPosY() {
@@ -59,6 +65,10 @@ public class Block {
 
     public Integer[] getID() {
         return this.id;
+    }
+    public void setID(Integer[] newID){
+        this.id = newID;
+        this.changeRectangleFill(newID[1]);
     }
 
     public void update(Integer value) {

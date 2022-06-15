@@ -13,7 +13,6 @@ import java.util.LinkedList;
 public class PlayScene extends GameScene {
     public PlayScene(Group group, Integer[][] blockMatrix, Integer[] barList) {
         super(group, blockMatrix, barList);
-        this.drawPlayer();
         this.configureKeyBindings();
     }
 
