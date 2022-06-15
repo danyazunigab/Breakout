@@ -32,8 +32,8 @@ void move_paddle(struct serversocket *socket, struct gamedata *data) {
 
 void Interpretate(struct gamedata *data) {
     printf("%s", data->msg);
-    int commands[6] = {1, 2, 3, 4, 5, 6};
-    char description[6][11] = {"Vida", "bola", "crecer", "decrecer", "velocidad+\0", "velocidad-"};
+    int commands[8] = {-1,0,1, 2, 3, 4, 5, 6};
+    char description[8][11] = {"Roto","Completo","Vida", "bola", "crecer", "decrecer", "velocidad+\0", "velocidad-"};
     printf("Codigos de comando <codigo><fila><columna>:\n");
     for (int i = 0; i < 6; ++i) {
         printf("%i ,%s en el bloque indicada \n", commands[i], description[i]);
@@ -71,8 +71,8 @@ void next_frame(struct gamedata *data) {
 };
 
 void move_ball(struct ball *ball) {
-    ball->x += floor(ball->vx * ball->factor);
-    ball->y += floor(ball->vy * ball->factor);
+    ball->x += floor(ball->vx * ball->factor*ball_vel);
+    ball->y += floor(ball->vy * ball->factor*ball_vel);
 };
 
 struct bricks *check_collision(struct ball *ball, struct bricks **bricks) {
@@ -141,7 +141,7 @@ void collision(struct ball *ball, struct bricks *brick, struct gamedata *data) {
         case 5:
             data->msg = "faster ball";
             ball->factor *= ball->factor;
-            ball->factor -= ball->factor / 4;
+            ball->factor -= ball->factor / 3;
             ball->factor = fabs(ball->factor);
             printf("block break %i", brick->state);
 
@@ -149,7 +149,7 @@ void collision(struct ball *ball, struct bricks *brick, struct gamedata *data) {
         case 6:
             data->msg = "slower ball";
             ball->factor = sqrt(ball->factor);
-            ball->factor += ball->factor / 4;
+            ball->factor += ball->factor / 3;
             ball->factor = fabs(ball->factor);
             printf("block break %i", brick->state);
 
@@ -162,7 +162,7 @@ void collision(struct ball *ball, struct bricks *brick, struct gamedata *data) {
     data->points += brick->value;
     ball->vy *= -1;
     brick->state = -1;
-
+    check_win(data);
 
 };
 
@@ -204,10 +204,37 @@ void check_limits(struct ball *ball, struct node *node, struct gamedata *data) {
 };
 
 void paddle_collision(struct ball *ball, struct paddle *bar) {
-    if (ball->y > PADTOP-15) {
+    if (ball->y > PADTOP - 15) {
         if (ball->x < bar->rigth && ball->x > bar->left) {
             ball->vy *= -1;
             ball->y -= ball->factor * 3;
         }
+    }
+};
+
+void check_win(struct gamedata *data) {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COL; j++) {
+            struct bricks block = data->blocks[i][j];
+            if (block.state != -1) {
+                return;
+            }
+
+
+        }
+    }
+    data->msg = "LEVEL UP";
+    reset_blocks(data);
+
+    struct node *actualnode;
+    int count=1;
+    ForEachDLL(actualnode, data->balls) {
+        struct ball *actualball = actualnode->value;
+        reset_ball(actualball);
+        actualball->x=60*count;
+        count++;
+        actualball->factor+=0.1;
+        actualball->vx+=0.6;
+        ball_vel+=0.5;
     }
 };

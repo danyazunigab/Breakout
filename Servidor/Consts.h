@@ -15,5 +15,7 @@
 #define PADVEL 5
 #define PADTOP 705
 
+extern float ball_vel;
 
+void initConstant() ;
 

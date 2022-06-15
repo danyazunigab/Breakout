@@ -23,4 +23,4 @@ void check_limits(struct ball*,struct node*, struct gamedata*);
 
 void paddle_collision(struct ball*, struct paddle*);
 
-
+void check_win(struct gamedata*);

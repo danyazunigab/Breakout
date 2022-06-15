@@ -10,6 +10,7 @@
 
 
 struct gamedata Init_gamedata(void) {
+    ball_vel=1;
     struct paddle paddle = {300, 450};
     struct head *balls = malloc(sizeof(struct head));
     DLL_zero(balls);
@@ -27,7 +28,7 @@ struct gamedata Init_gamedata(void) {
 void reset_blocks(struct gamedata *data) {
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COL; ++j) {
-            data->blocks[i][j].value = 0;
+            data->blocks[i][j].state = 0;
         }
     }
 };
@@ -41,7 +42,7 @@ struct bricks **create_blocks() {
 
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COL; ++j) {
-            blocks[i][j].state = 2;
+            blocks[i][j].state = -1;
             blocks[i][j].left = 70 * j + 16;
             blocks[i][j].rigth = 70 * j + 16 + 68;
             blocks[i][j].top = 45 * i + 16;

@@ -3,3 +3,5 @@
 //
 
 #include "Consts.h"
+float ball_vel;
+
